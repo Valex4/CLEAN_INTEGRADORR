@@ -146,6 +146,9 @@ module.exports={
           },
           seguimientoVendedor:function(req, res){
             res.render('carritos/seguimientoVendedor');
+          },
+          pagar:function(req, res){
+            res.render('carritos/pagos');
           }
     
 }
