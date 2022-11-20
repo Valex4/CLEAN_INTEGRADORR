@@ -13,4 +13,6 @@ router.get("/serums",carritoController.serums);
 router.post("/serums", carritoController.insertProductos4);
 router.get("/cart/:id_comprador",carritoController.cart);
 router.post("/cart/:id_carrito",carritoController.eliminarPcarrito);
+router.get("/seguimientoComprador",carritoController.seguimientoComprador);
+router.get("/seguimientoVendedor",carritoController.seguimientoVendedor);
 module.exports = router;

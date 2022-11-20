@@ -140,6 +140,12 @@ module.exports={
               });
 
             });
+          },
+          seguimientoComprador:function(req, res){
+            res.render('carritos/seguimientoComprador');
+          },
+          seguimientoVendedor:function(req, res){
+            res.render('carritos/seguimientoVendedor');
           }
     
 }
