@@ -16,5 +16,8 @@ module.exports ={
     },
     obtenerCarrito:function(conexion,id_comprador, funcion){
       conexion.query("SELECT * FROM carrito WHERE id_comprador = ?",[id_comprador],funcion);
+    },
+    eliminarCarrito:function(conexion,id_carrito,funcion){
+      conexion.query("DELETE FROM carrito WHERE id_carrito=?",[id_carrito],funcion);
     }
 }

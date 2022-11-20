@@ -116,6 +116,30 @@ module.exports={
               res.render('carritos/serums', { products: datos, comprador:req.body.id_comprador});
             });
           });
+          },
+          eliminarPcarrito:function(req, res){
+            console.log("ya estas en en eliminar un p de carrito");
+            console.log(req.params.id_carrito);
+            carrito.eliminarCarrito(conexion, req.params.id_carrito,function(err){
+              let id_comprador = require("../public/javascripts/id");
+              console.log("id_comprador en eliminar carrito");
+              console.log(id_comprador[id_comprador.length - 1]);
+              let id_c =id_comprador[id_comprador.length - 1];
+              carrito.obtenerCarrito(conexion, id_c,(err, productosC)=>{
+                console.log("El comprador tiene: "+ productosC.length + " productos");
+                let suma = 0;
+                for(let i=0; i<productosC.length; i++) {
+                  productosC[i].precioProducto *= productosC[i].cantidad;
+                  suma += productosC[i].precioProducto;
+                  
+                }
+                console.log("Monto total: " + suma);
+        
+        
+                res.render('carritos/cart',{products:productosC, total:suma});
+              });
+
+            });
           }
     
 }
