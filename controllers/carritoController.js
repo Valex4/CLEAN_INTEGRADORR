@@ -58,6 +58,7 @@ module.exports={
         console.log("El comprador tiene: "+ productosC.length + " productos");
         let suma = 0;
         for(let i=0; i<productosC.length; i++) {
+          productosC[i].precioProducto *= productosC[i].cantidad;
           suma += productosC[i].precioProducto;
           
         }
@@ -100,7 +101,7 @@ module.exports={
           carrito.categoriaJabon(conexion, (err, datos) =>{
             console.log(datos);
     
-            res.render('carritos/jabones', { title: 'CleanSkin', products: datos, comprador:req.body.id_comprador});
+            res.render('carritos/jabones', { products: datos, comprador:req.body.id_comprador});
           });
         });
         },
@@ -112,7 +113,7 @@ module.exports={
             carrito.categoriaSerum(conexion, (err, datos) =>{
               console.log(datos);
       
-              res.render('carritos/serums', { title: 'CleanSkin', products: datos, comprador:req.body.id_comprador});
+              res.render('carritos/serums', { products: datos, comprador:req.body.id_comprador});
             });
           });
           }
