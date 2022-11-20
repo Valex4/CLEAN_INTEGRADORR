@@ -32,14 +32,15 @@
           <a class="nav-link" href="/users/loginComprador">Cerrar Sesion</a>
       </li>
       
-      <li class="nav-item">
-        <form action="/carritos/cart/<%= comprador %>" method="get" >
-          <button type="submit" style="background-color: transparent; cursor:pointer; border:transparent;"><img src="/images/carrito.png" width="30px" alt=""></button>
-        </form>
-    </li>
+      
       
       </ul>
-      
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <form action="/carritos/cart/<%= comprador %>" method="get" >
+            <button type="submit" style="background-color: transparent; cursor:pointer; border:transparent;"><img src="/images/carrito.png" width="30px" alt=""></button>
+          </form>
+      </li>
         </ul>
     </div>
 </nav>
