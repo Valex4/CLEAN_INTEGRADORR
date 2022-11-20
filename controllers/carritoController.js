@@ -82,7 +82,7 @@ module.exports={
     });
     },
     insertProductos2:function(req,res){
-      console.log('Datos para guardar en la BD de carrito');
+      console.log('Datos para guardar desde cremas');
       console.log(req.body);
       carrito.insertarCarrito(conexion, req.body,(err, datos)=>{
         console.log("datos guardados exitosamente en la BD de carrito");
@@ -94,7 +94,7 @@ module.exports={
       });
       },
       insertProductos3:function(req,res){
-        console.log('Datos para guardar en la BD de carrito');
+        console.log('Datos para guardar desde jabones');
         console.log(req.body);
         carrito.insertarCarrito(conexion, req.body,(err, datos)=>{
           console.log("datos guardados exitosamente en la BD de carrito");
@@ -106,7 +106,7 @@ module.exports={
         });
         },
         insertProductos4:function(req,res){
-          console.log('Datos para guardar en la BD de carrito');
+          console.log('Datos para guardar desde serums');
           console.log(req.body);
           carrito.insertarCarrito(conexion, req.body,(err, datos)=>{
             console.log("datos guardados exitosamente en la BD de carrito");

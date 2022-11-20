@@ -17,9 +17,21 @@
               <input type="hidden" value="<%=products[product].id_producto%>" name="id_producto">
               <input type="hidden" value="<%=products[product].nombre %>" name="nombre">
               <input type="hidden" value="<%=products[product].precio %>" name="precio">
-              <input type="hidden" value="1" name="cantidad">
+              <label for="my-input">Cantidad: </label>
+              <select class="form-control" name="cantidad">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
               <input type="hidden" value="<%=comprador%>" name="id_comprador" id="id_comprador">
-           
+              <br>
               <button class="btn btn-primary" type="submit">Comprar</button>
     
             </form>
