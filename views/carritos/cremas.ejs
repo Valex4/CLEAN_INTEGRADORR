@@ -13,7 +13,16 @@
             <p class="card-text">Categoria: <%=products[product].categoria %></p>
             <p class="card-text"><%=products[product].descripcion %></p>
             <p class="card-text">$<%=products[product].precio %></p>
-            <a href="#" class="btn btn-success">Comprar</a>
+            <form name="formulario" method="post" action="/carritos/cremas">
+              <input type="hidden" value="<%=products[product].id_producto%>" name="id_producto">
+              <input type="hidden" value="<%=products[product].nombre %>" name="nombre">
+              <input type="hidden" value="<%=products[product].precio %>" name="precio">
+              <input type="hidden" value="1" name="cantidad">
+              <input type="hidden" value="<%=comprador%>" name="id_comprador" id="id_comprador">
+           
+              <button class="btn btn-primary" type="submit">Comprar</button>
+    
+            </form>
           </div>
         </div>
     </div>

@@ -70,7 +70,7 @@ module.exports={
         if(registro.length > 0){ //esto es para evaluar el correo
           //(data.contra1 == prueba[0].contrasena) ? res.render('./carritos/', {comprador:registro[0].id_comprador, productos: 1}) : res.render('users/loginComprador', { cadena: '¡¡ Contraseña incorrecta !!'});
             if(data.contra1 == prueba[0].contrasena){
-              let ids = require("../views/carritos/id");
+              let ids = require("../public/javascripts/id");
               ids.push(registro[0].id_comprador);
 
               user.obtenerProduct(conexion, (err, productos)=>{

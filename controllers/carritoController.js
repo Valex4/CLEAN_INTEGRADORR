@@ -1,12 +1,12 @@
 var conexion=require("../config/conexion");
 let carrito=require("../model/carrito");
-const ids = require("../views/carritos/id");
+const ids = require("../public/javascripts/id");
 const { cremas } = require("./productController");
 
 module.exports={
 
     index:function(req,res){
-      let id_comprador = require("../views/carritos/id");
+      let id_comprador = require("../public/javascripts/id");
       console.log("id_comprador en cremas");
       console.log(id_comprador[id_comprador.length - 1]);
       let id_c =id_comprador[id_comprador.length - 1];
@@ -17,7 +17,7 @@ module.exports={
       });
     },
     cremas:function(req, res){
-      let id_comprador = require("../views/carritos/id");
+      let id_comprador = require("../public/javascripts/id");
       console.log("id_comprador en cremas");
       console.log(id_comprador[id_comprador.length - 1]);
       let id_c =id_comprador[id_comprador.length - 1];
@@ -26,7 +26,7 @@ module.exports={
       })
     },
     jabones:function(req, res){
-      let id_comprador = require("../views/carritos/id");
+      let id_comprador = require("../public/javascripts/id");
       console.log("id_comprador en jabones");
       console.log(id_comprador[id_comprador.length - 1]);
       let id_c =id_comprador[id_comprador.length - 1];
@@ -35,7 +35,7 @@ module.exports={
       });
     },
     serums:function(req, res){
-      let id_comprador = require("../views/carritos/id");
+      let id_comprador = require("../public/javascripts/id");
       console.log("id_comprador en serums");
       console.log(id_comprador[id_comprador.length - 1]);
       let id_c =id_comprador[id_comprador.length - 1];
@@ -44,7 +44,7 @@ module.exports={
       });
     },
     cart:function(req, res){
-      let id_comprador = require("../views/carritos/id");
+      let id_comprador = require("../public/javascripts/id");
       console.log("id_comprador en serums");
       console.log(id_comprador[id_comprador.length - 1]);
       let id_c =id_comprador[id_comprador.length - 1];
