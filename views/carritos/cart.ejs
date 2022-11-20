@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheets/cart.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> 
+        <link rel="icon" href="/images/CS2.png">
+        <title>Carrito</title>
+       
+    </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/carritos/">
+          <img src="/images/CS2.png" width="40px">  Clean Skin</a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/carritos/jabones">Jabones</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/carritos/serums">Serums</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/carritos/cremas">Cremas</a>
+            </li>
+            <ul class="nav justify-content-end"></ul>
+            <li class="nav-item active">
+              <a class="nav-link" href="/users/loginComprador">Cerrar Sesion</a>
+          </li>
+          </ul>
+          
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br><br><br>
+
+        <div class="container"  style="width:400px">
+            <br>
+            <h1>Carrito de compras</h1>
+            <br>
+        </div>
+    
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>cantidad</th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <% for( let product = 0; product < products.length; product++ ) { %>
+                <tr>
+                    <td> <%= product +1 %>  </td>
+                    <td> <%=products[product].nombreProducto %></td>
+                   
+                    <td> <%=products[product].precioProducto %></td>
+                    <td> <%=products[product].cantidad %></td>
+                    <td> 
+                        
+                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                            <form class="form-inline"  >
+                                <button type="submit"class="noselect"><span class="text">Eliminar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span> </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+
+                
+            <% } %>
+        </tbody>
+        <h2>monto total: </h2>
+        <h2><%= total  %> </h2>
+    </div>
+</body>
+</html>

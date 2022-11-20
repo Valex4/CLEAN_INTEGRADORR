@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/compradorStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <title>COMPRADOR</title>
+    <link rel="shortcut icon" href="/images/CS2.png">
+</head>
+
+<body> 
+
+    <!-- COMPRADOR -->
+    <div class="container-form sign-up">
+        <div class="welcome-back">
+            <div class="message">
+                <h2>Bienvenido a Clean <span>Skin</span></h2>
+                <p>Si ya tienes una cuenta por favor inicia sesion aqui</p>
+                <button class="sign-up-btn" onclick="location.href='./loginComprador'">Iniciar Sesion</button>
+            </div>
+        </div>
+        <form class="formulario" method="post" name="formulario1">
+            <h2 class="create-account">Crear una cuenta</h2>
+            
+            <!-- <p class="cuenta-gratis">Crear una cuenta gratis</p> -->
+            <label for="">Nombre</label>
+            <input type="text" name="Usuario" id="usuario" required>
+            <label for="">Email</label>
+            <input type="email" name="correo1" required>
+            <label for="">Contraseña</label>
+            <input type="password" name="contra1" required>
+            <label for="">Apellido Paterno</label>
+            <input type="text" name="ap_paterno" required>
+            <label for="">Apellido Materno</label>
+            <input type="text" name="ap_materno" required>
+            <label for="">Direccion</label>
+            <input type="text" name="direccion" required>
+            <p class="error">   <%= typeof cadena != 'undefined' ?  cadena  : '  '  %> </p>
+            <br>
+            <button type="sumbit" class="submit1" value="Registrarse" onclick="impresion1()"> Registrarse</button>
+        </form>
+    </div>
+    <script src="/javascripts/comprador.js"></script>
+</body>
+
+</html>

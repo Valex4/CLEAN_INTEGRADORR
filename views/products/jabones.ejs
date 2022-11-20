@@ -1,0 +1,29 @@
+<%- include ../layouts/cabeceraProductos.ejs %> 
+<br/>
+<br>
+<br>
+<h2>Seccion de Jabones</h2>
+    
+<div class="row mx-5">
+    <% for( let product = 0; product < products.length; product++ ) { %>
+    <div class="col">
+      <br>
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/images/<%=products[product].imagen %>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%=products[product].nombre %></h5>
+            <p class="card-text">Categoria: <%=products[product].categoria %></p>
+            <p class="card-text"><%=products[product].descripcion %></p>
+            <p class="card-text">$<%=products[product].precio %></p>
+            <a href="#" class="btn btn-success">Comprar</a>
+          </div>
+        </div>
+    </div>
+    <% } %>
+</div>
+  
+
+
+
+
+<%- include ../layouts/pie.ejs %>   

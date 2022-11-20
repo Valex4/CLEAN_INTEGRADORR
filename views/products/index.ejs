@@ -1,0 +1,67 @@
+<%- include ../layouts/cabecera.ejs %> 
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h2>Gestion de Productos</h2>
+        <br/>
+        <form class="form-inline" method="get" action="/products/crear/<%= vendedor %>">
+            <button class="btn btn-primary" type="submit">Crear un nuevo producto</button>
+        </form>
+        <br>
+        <a href="/carritos/" class="btn btn-success" type="button">Catalogo</a>
+        <a href="/products/seguimiento" class="btn btn-success" type="button">Seguimiento Envios</a>
+        <a href="/users/loginVendedor" class="btn btn-danger" type="button">Cerrar Sesion</a>
+        <br/>
+        <br/>
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Descripcion</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% for( let product = 0; product < products.length; product++ ) { %>
+                    <tr>
+                        <td> <%=products[product].id_producto %>  </td>
+                        <td> <%=products[product].nombre %></td>
+                        <td> <%=products[product].categoria %></td>
+                        <td> <%=products[product].precio %></td>
+                        <td> <%=products[product].stock %></td>
+                        <td> <%=products[product].descripcion %></td>
+                        <td> 
+                            <img class="img-thumbnail" width="100" src="/images/<%=products[product].imagen %>" alt="">
+                           
+                        </td>
+                        <td> 
+                            
+                            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <form class="form-inline" method="post" action="/products/eliminar/<%=products[product].id_producto %>">
+                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                </form>
+                            </div>
+                            |
+                            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <form class="form-inline" method="get" action="/products/editar/<%=products[product].id_producto %>">
+                                    <button class="btn btn-warning" type="submit">Editar</button>
+                                </form>
+                            </div>
+                        
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+       
+        <%- include ../layouts/pie.ejs %>   

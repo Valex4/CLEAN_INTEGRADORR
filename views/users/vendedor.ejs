@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/vendedorStyle.css">
+    <link rel="stylesheet" href="/stylesheets/sweetalert2.css">
+    <title>Vendedor</title>
+    <link rel="shortcut icon" href="/images/CS2.png">
+</head>
+<body>
+    <!-- venderdor -->
+    <div class="container-form sign-up">
+        <div class="welcome-back">
+            <div class="message">
+                <h2>Bienvenido a Clean <span>Skin</span></h2>
+                <p>Si ya tienes una cuenta por favor inicia sesion aqui</p>
+                <button class="sign-up-btn" onclick="location.href='./loginVendedor'">Iniciar Sesion</button>
+            </div>
+        </div>
+        <form class="formulario" method="post" name="registroVendedor">
+            <h2 class="create-account">Crear una cuenta</h2>
+            
+            <!-- <p class="cuenta-gratis">Crear una cuenta gratis</p> -->
+            <label for="">Nombre</label>
+            <input type="text" name="nombreUsuario" id="usuario" >
+            <label for="">Email</label>
+            <input type="email" name="correo">
+            <label for="">Contraseña</label>
+            <input type="password" name="contraseña">   
+            <label for="">Apellido Paterno</label>
+            <input type="text" name="ap_paterno">
+            <label for="">Apellido Materno</label>
+            <input type="text" name="ap_materno">
+            <p class="error">   <%= typeof cadena != 'undefined' ?  cadena  : '  '  %> </p>  
+            <br>
+            <button type="submit" class="submit1" value="Iniciar Sesion" onclick="impresion1()"> Registrarse</button>
+        </form>
+    </div>
+    <script src="/javascripts/vendedor.js"></script>
+    <script src="/javascripts/sweetalert2.js"></script>
+</body>
+</html>
