@@ -319,7 +319,14 @@ module.exports = {
         console.log("Direccion comprador: " + direccionC);
         console.log("Estado: " + estado);
         console.log("id_comprador: " + id_shopper);
-        res.render("carritos/seguimientoComprador", { products: productosC, total: suma, comprador: comprador });
+        
+        carrito.insertarDatosSeguimiento(conexion,direccionC,estado,id_shopper,(err)=>{
+          console.log("Corre a ver en la base de  datos de seguimiento")
+        
+          carrito.obtenerSeguimientoComprador(conexion, id_shopper,(err, productosSeguimiento)=>{
+            res.render("carritos/seguimientoComprador", { products: productosSeguimiento, total: suma, comprador: comprador });
+          })
+        });
       
       });
     });

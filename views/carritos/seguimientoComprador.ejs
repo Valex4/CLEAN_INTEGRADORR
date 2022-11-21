@@ -35,8 +35,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Direccion</th>
                 <th scope="col">Enviar A</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Subtotal</th>
+                <th scope="col">Estado del envio</th>
               </tr>
             </thead>
             <tbody>
@@ -46,8 +45,7 @@
                 <td class="A k"><%= products[product].nombreProducto %> </td>
                 <td class="A"> <%= comprador[0].direccion %> </td>
                 <td class="A k"><%= comprador[0].nombre %> </td>
-                <td class="A"><%=products[product].cantidad %>  </td>
-                <td class="A k">$ <%=products[product].precioProducto  %> </td>
+                <td class="A"><%=products[product].estado %>  </td>
               </tr>
               <% } %>
             </tbody>
