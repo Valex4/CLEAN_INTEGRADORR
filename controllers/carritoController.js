@@ -301,6 +301,33 @@ module.exports = {
     res.render("carritos/seguimientoVendedor");
   },
   pagar: function (req, res) {
-    res.render("carritos/pagos");
+    let id_comprador = require("../public/javascripts/id");
+    console.log("id_comprador en jabones");
+    console.log(id_comprador[id_comprador.length - 1]);
+    let id_c = id_comprador[id_comprador.length - 1];
+
+
+    carrito.obtenerDatosComprador(conexion, id_c,(err, comprador)=>{
+      console.log("imprimiendo los datos del comprador")
+      console.log(comprador);
+      console.log(comprador[0].nombre);
+      carrito.obtenerCarrito(conexion, id_c, (err, productosC) => {
+        let copia = [];
+        copia = productosC;
+        console.log("El comprador tiene: " + copia.length + " productos");
+        let suma = 0;
+        for (let i = 0; i < copia.length; i++) {
+          copia[i].precioProducto *= copia[i].cantidad;
+          suma += copia[i].precioProducto;
+        }
+        console.log("Monto total: " + suma);
+  
+        res.render("carritos/pagos", { products: productosC, total: suma, comprador: comprador });
+      });
+
+    })
+
+
+    
   },
 };

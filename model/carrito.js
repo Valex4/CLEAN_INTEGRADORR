@@ -25,5 +25,8 @@ module.exports ={
     },
     actualizarCantidadProducto:function(conexion,cantidad,id_producto, id_comprador,funcion){
       conexion.query("UPDATE carrito SET cantidad = ? WHERE id_producto = ? AND id_comprador = ?",[cantidad,id_producto, id_comprador],funcion);
+    },
+    obtenerDatosComprador:function(conexion,id_comprador,funcion){
+      conexion.query("SELECT * FROM comprador WHERE id_comprador = ?",[id_comprador],funcion);
     }
 }
