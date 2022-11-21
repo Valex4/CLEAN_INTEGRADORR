@@ -314,12 +314,10 @@ module.exports = {
       carrito.obtenerDatosComprador(conexion, id_c,(err, comprador) =>{
         let direccionC = comprador[0].direccion;
         let estado = "pendiente";
-        let id_vendedor = prod[0].id_vendedor;
         let id_shopper = comprador[0].id_comprador;
         console.log("datos que necesito: ");
         console.log("Direccion comprador: " + direccionC);
         console.log("Estado: " + estado);
-        console.log("id_vendedor: " + id_vendedor);
         console.log("id_comprador: " + id_shopper);
         res.render("carritos/seguimientoComprador", { products: productosC, total: suma, comprador: comprador });
       

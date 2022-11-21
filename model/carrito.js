@@ -33,7 +33,7 @@ module.exports ={
       conexion.query("SELECT * FROM producto where id_producto = ?", [id_producto], funcion);
     },
     insertarDatosSeguimiento:function(conexion,direccionC,estado,id_vendedor,id_comprador,funcion){
-      conexion.query("INSERT INTO seguimiento (nombreProducto, direccionComprador, estado, id_producto, id_comprador, vendedor_id_vendedor) SELECT nombreProducto, ? , ?, id_producto, id_comprador, id_vendedor FROM carrito WHERE id_comprador = ?",[direccionC,estado,id_vendedor,id_comprador],funcion);
+      conexion.query("INSERT INTO seguimiento (numeroPedido,nombreProducto, direccionComprador, estado, id_producto, id_comprador, vendedor_id_vendedor) SELECT id_carrito,nombreProducto, ? , ?, id_producto, id_comprador, id_vendedor FROM carrito WHERE id_comprador = ?",[direccionC,estado,id_vendedor,id_comprador],funcion);
     
     }
     
