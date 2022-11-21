@@ -77,156 +77,201 @@ module.exports = {
     console.log("Datos para guardar en la BD de carrito");
     console.log(req.body);
     console.log(req.body.id_producto);
-    carrito.ObtenerIdProducto(conexion, req.body.id_producto,req.body.id_comprador , (err, existe) => {
-      console.log("validando si existe o no");
-      if(existe.length == 1){
-        console.log("se sumara la cantidad de los productos al actual");
-        console.log(existe);
-        console.log("tratando de sumar las dos cantidades");
-        let sumatoria =   parseInt(req.body.cantidad) + parseInt(existe[0].cantidad) ;
-        console.log("La suma de las cantidades es: "+ sumatoria);
-        carrito.actualizarCantidadProducto(conexion, sumatoria, req.body.id_producto,req.body.id_comprador, (err)=>{
-          carrito.obtener(conexion, (err, datos) => {
-            console.log(datos);
-    
-            res.render("carritos/index", {
-              title: "CleanSkin",
-              productos: datos,
-              comprador: req.body.id_comprador,
+    carrito.ObtenerIdProducto(
+      conexion,
+      req.body.id_producto,
+      req.body.id_comprador,
+      (err, existe) => {
+        console.log("validando si existe o no");
+        if (existe.length == 1) {
+          console.log("se sumara la cantidad de los productos al actual");
+          console.log(existe);
+          console.log("tratando de sumar las dos cantidades");
+          let sumatoria =
+            parseInt(req.body.cantidad) + parseInt(existe[0].cantidad);
+          console.log("La suma de las cantidades es: " + sumatoria);
+          carrito.actualizarCantidadProducto(
+            conexion,
+            sumatoria,
+            req.body.id_producto,
+            req.body.id_comprador,
+            (err) => {
+              carrito.obtener(conexion, (err, datos) => {
+                console.log(datos);
+
+                res.render("carritos/index", {
+                  title: "CleanSkin",
+                  productos: datos,
+                  comprador: req.body.id_comprador,
+                });
+              });
+            }
+          );
+        } else {
+          console.log("Se agrega el producto al carrito");
+          carrito.insertarCarrito(conexion, req.body, (err, datos) => {
+            console.log("datos guardados exitosamente en la BD de carrito");
+            carrito.obtener(conexion, (err, datos) => {
+              console.log(datos);
+
+              res.render("carritos/index", {
+                title: "CleanSkin",
+                productos: datos,
+                comprador: req.body.id_comprador,
+              });
             });
           });
-        });
-      }else{
-        console.log("Se agrega el producto al carrito");
-        carrito.insertarCarrito(conexion, req.body, (err, datos) => {
-      console.log("datos guardados exitosamente en la BD de carrito");
-      carrito.obtener(conexion, (err, datos) => {
-        console.log(datos);
-
-        res.render("carritos/index", {
-          title: "CleanSkin",
-          productos: datos,
-          comprador: req.body.id_comprador,
-        });
-      });
-    });
+        }
       }
-
-    });
+    );
   },
   insertProductos2: function (req, res) {
     console.log("Datos para guardar desde cremas");
     console.log(req.body);
-    carrito.ObtenerIdProducto(conexion, req.body.id_producto,req.body.id_comprador , (err, existe) => {
-      console.log("validando si existe o no");
-      if(existe.length == 1){
-        console.log("se sumara la cantidad de los productos al actual");
-        console.log(existe);
-        console.log("tratando de sumar las dos cantidades");
-        let sumatoria =   parseInt(req.body.cantidad) + parseInt(existe[0].cantidad) ;
-        console.log("La suma de las cantidades es: "+ sumatoria);
-        carrito.actualizarCantidadProducto(conexion, sumatoria, req.body.id_producto,req.body.id_comprador, (err)=>{
-          carrito.categoriaCrema(conexion, (err, datos) => {
-            console.log(datos);
-    
-            res.render("carritos/cremas", {
-              title: "CleanSkin",
-              products: datos,
-              comprador: req.body.id_comprador,
+    carrito.ObtenerIdProducto(
+      conexion,
+      req.body.id_producto,
+      req.body.id_comprador,
+      (err, existe) => {
+        console.log("validando si existe o no");
+        if (existe.length == 1) {
+          console.log("se sumara la cantidad de los productos al actual");
+          console.log(existe);
+          console.log("tratando de sumar las dos cantidades");
+          let sumatoria =
+            parseInt(req.body.cantidad) + parseInt(existe[0].cantidad);
+          console.log("La suma de las cantidades es: " + sumatoria);
+          carrito.actualizarCantidadProducto(
+            conexion,
+            sumatoria,
+            req.body.id_producto,
+            req.body.id_comprador,
+            (err) => {
+              carrito.categoriaCrema(conexion, (err, datos) => {
+                console.log(datos);
+
+                res.render("carritos/cremas", {
+                  title: "CleanSkin",
+                  products: datos,
+                  comprador: req.body.id_comprador,
+                });
+              });
+            }
+          );
+        } else {
+          carrito.insertarCarrito(conexion, req.body, (err, datos) => {
+            console.log("datos guardados exitosamente en la BD de carrito");
+            carrito.categoriaCrema(conexion, (err, datos) => {
+              console.log(datos);
+
+              res.render("carritos/cremas", {
+                title: "CleanSkin",
+                products: datos,
+                comprador: req.body.id_comprador,
+              });
             });
           });
-        });
-      }else{
-        carrito.insertarCarrito(conexion, req.body, (err, datos) => {
-          console.log("datos guardados exitosamente en la BD de carrito");
-          carrito.categoriaCrema(conexion, (err, datos) => {
-            console.log(datos);
-    
-            res.render("carritos/cremas", {
-              title: "CleanSkin",
-              products: datos,
-              comprador: req.body.id_comprador,
-            });
-          });
-        });
+        }
       }
-    });
+    );
   },
   insertProductos3: function (req, res) {
     console.log("Datos para guardar desde jabones");
     console.log(req.body);
-    carrito.ObtenerIdProducto(conexion, req.body.id_producto,req.body.id_comprador , (err, existe) => {
-      console.log("validando si existe o no");
-      if(existe.length == 1){
-        console.log("se sumara la cantidad de los productos al actual");
-        console.log(existe);
-        console.log("tratando de sumar las dos cantidades");
-        let sumatoria =   parseInt(req.body.cantidad) + parseInt(existe[0].cantidad) ;
-        console.log("La suma de las cantidades es: "+ sumatoria);
-        carrito.actualizarCantidadProducto(conexion, sumatoria, req.body.id_producto,req.body.id_comprador, (err)=>{
-          carrito.categoriaJabon(conexion, (err, datos) => {
-            console.log(datos);
-    
-            res.render("carritos/jabones", {
-              title: "CleanSkin",
-              products: datos,
-              comprador: req.body.id_comprador,
+    carrito.ObtenerIdProducto(
+      conexion,
+      req.body.id_producto,
+      req.body.id_comprador,
+      (err, existe) => {
+        console.log("validando si existe o no");
+        if (existe.length == 1) {
+          console.log("se sumara la cantidad de los productos al actual");
+          console.log(existe);
+          console.log("tratando de sumar las dos cantidades");
+          let sumatoria =
+            parseInt(req.body.cantidad) + parseInt(existe[0].cantidad);
+          console.log("La suma de las cantidades es: " + sumatoria);
+          carrito.actualizarCantidadProducto(
+            conexion,
+            sumatoria,
+            req.body.id_producto,
+            req.body.id_comprador,
+            (err) => {
+              carrito.categoriaJabon(conexion, (err, datos) => {
+                console.log(datos);
+
+                res.render("carritos/jabones", {
+                  title: "CleanSkin",
+                  products: datos,
+                  comprador: req.body.id_comprador,
+                });
+              });
+            }
+          );
+        } else {
+          carrito.insertarCarrito(conexion, req.body, (err, datos) => {
+            console.log("datos guardados exitosamente en la BD de carrito");
+            carrito.categoriaJabon(conexion, (err, datos) => {
+              console.log(datos);
+
+              res.render("carritos/jabones", {
+                products: datos,
+                comprador: req.body.id_comprador,
+              });
             });
           });
-        });
-      }else{
-        carrito.insertarCarrito(conexion, req.body, (err, datos) => {
-          console.log("datos guardados exitosamente en la BD de carrito");
-          carrito.categoriaJabon(conexion, (err, datos) => {
-            console.log(datos);
-    
-            res.render("carritos/jabones", {
-              products: datos,
-              comprador: req.body.id_comprador,
-            });
-          });
-        });
+        }
       }
-    });
+    );
   },
   insertProductos4: function (req, res) {
     console.log("Datos para guardar desde serums");
     console.log(req.body);
-    carrito.ObtenerIdProducto(conexion, req.body.id_producto,req.body.id_comprador , (err, existe) => {
-      console.log("validando si existe o no");
-      if(existe.length == 1){
-        console.log("se sumara la cantidad de los productos al actual");
-        console.log(existe);
-        console.log("tratando de sumar las dos cantidades");
-        let sumatoria =   parseInt(req.body.cantidad) + parseInt(existe[0].cantidad) ;
-        console.log("La suma de las cantidades es: "+ sumatoria);
-        carrito.actualizarCantidadProducto(conexion, sumatoria, req.body.id_producto,req.body.id_comprador, (err)=>{
-          carrito.categoriaSerum(conexion, (err, datos) => {
-            console.log(datos);
-    
-            res.render("carritos/serums", {
-              title: "CleanSkin",
-              products: datos,
-              comprador: req.body.id_comprador,
+    carrito.ObtenerIdProducto(
+      conexion,
+      req.body.id_producto,
+      req.body.id_comprador,
+      (err, existe) => {
+        console.log("validando si existe o no");
+        if (existe.length == 1) {
+          console.log("se sumara la cantidad de los productos al actual");
+          console.log(existe);
+          console.log("tratando de sumar las dos cantidades");
+          let sumatoria =
+            parseInt(req.body.cantidad) + parseInt(existe[0].cantidad);
+          console.log("La suma de las cantidades es: " + sumatoria);
+          carrito.actualizarCantidadProducto(
+            conexion,
+            sumatoria,
+            req.body.id_producto,
+            req.body.id_comprador,
+            (err) => {
+              carrito.categoriaSerum(conexion, (err, datos) => {
+                console.log(datos);
+
+                res.render("carritos/serums", {
+                  title: "CleanSkin",
+                  products: datos,
+                  comprador: req.body.id_comprador,
+                });
+              });
+            }
+          );
+        } else {
+          carrito.insertarCarrito(conexion, req.body, (err, datos) => {
+            console.log("datos guardados exitosamente en la BD de carrito");
+            carrito.categoriaSerum(conexion, (err, datos) => {
+              console.log(datos);
+
+              res.render("carritos/serums", {
+                products: datos,
+                comprador: req.body.id_comprador,
+              });
             });
           });
-        });
-      }else{
-        carrito.insertarCarrito(conexion, req.body, (err, datos) => {
-          console.log("datos guardados exitosamente en la BD de carrito");
-          carrito.categoriaSerum(conexion, (err, datos) => {
-            console.log(datos);
-    
-            res.render("carritos/serums", {
-              products: datos,
-              comprador: req.body.id_comprador,
-            });
-          });
-        });
+        }
       }
-    });
-
-
+    );
   },
   eliminarPcarrito: function (req, res) {
     console.log("ya estas en en eliminar un p de carrito");
