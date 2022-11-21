@@ -19,5 +19,11 @@ module.exports ={
     },
     eliminarCarrito:function(conexion,id_carrito,funcion){
       conexion.query("DELETE FROM carrito WHERE id_carrito=?",[id_carrito],funcion);
+    },
+    ObtenerIdProducto:function(conexion,id_producto, id_comprador,funcion){
+      conexion.query("SELECT * FROM carrito WHERE id_producto = ? AND id_comprador = ?",[id_producto, id_comprador],funcion);
+    },
+    actualizarCantidadProducto:function(conexion,cantidad,id_producto, id_comprador,funcion){
+      conexion.query("UPDATE carrito SET cantidad = ? WHERE id_producto = ? AND id_comprador = ?",[cantidad,id_producto, id_comprador],funcion);
     }
 }
