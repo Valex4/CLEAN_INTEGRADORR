@@ -12,7 +12,7 @@ module.exports ={
       conexion.query("SELECT * FROM producto where categoria= \"serum\" ",funcion);
     },
     insertarCarrito:function(conexion,datos, funcion){
-      conexion.query("INSERT INTO carrito (id_producto,nombreProducto,precioProducto,cantidad,id_comprador) VALUES (?,?,?,?,?)",[datos.id_producto, datos.nombre, datos.precio,datos.cantidad,datos.id_comprador], funcion);
+      conexion.query("INSERT INTO carrito (id_producto,nombreProducto,precioProducto,cantidad,id_comprador,id_vendedor) VALUES (?,?,?,?,?,?)",[datos.id_producto, datos.nombre, datos.precio,datos.cantidad,datos.id_comprador, datos.id_vendedor], funcion);
     },
     obtenerCarrito:function(conexion,id_comprador, funcion){
       conexion.query("SELECT * FROM carrito WHERE id_comprador = ?",[id_comprador],funcion);
