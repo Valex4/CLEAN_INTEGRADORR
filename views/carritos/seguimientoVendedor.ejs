@@ -24,7 +24,10 @@
                 <td><%= correo %> </td>
                 <td><%= ventas[product].direccionComprador %></td>
                 <td><%= ventas[product].estado %></td>
-                <td> <a href="/products/seguimientoproductos" class="btn btn-warning" type="button">Estados del Producto</a></td>
+                <td> <a href="/carritos/actualizarEstado" class="btn btn-warning" type="button">Editar estado</a></td>
+                <td><form class="form-inline" method="get" action="/carritos/actualizarEstado/<%= ventas[product].id_seguimiento %> ">
+                    <button class="btn btn-warning" type="submit">Editar</button>
+                </form></td>
             </tr>
             <% } %>
     </tbody>

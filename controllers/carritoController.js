@@ -338,23 +338,27 @@ module.exports = {
   seguimientoVendedor: function (req, res) {
     let id_ven= require("../public/javascripts/idVendedor");
     let id_vendedor = id_ven[id_ven.length-1];
-    console.log("Id del comprador en seguimiento pedidos: "+ id_vendedor);
-
+    console.log("Id del vendedor en seguimiento pedidos: "+ id_vendedor);
     carrito.obtenerSeguimientoVendedor(conexion, id_vendedor,(err, ventas)=>{
-
         carrito.obtenerDatosComprador(conexion, ventas[0].id_comprador, (err, compradorDatos)=>{
           console.log("recuperadno los datos del comprador: ");
           console.log(compradorDatos[0].correo);
           let correo = compradorDatos[0].correo;
+          
+          let idp = parseInt(ventas[0].id_producto);
+          let idc = parseInt(ventas[0].id_comprador);
+          let idv = parseInt(id_vendedor);
+
+          let arreglo = [];
+          arreglo.push(idp);
+          arreglo.push(idc);
+          arreglo.push(idv);
 
           res.render("carritos/seguimientoVendedor", {ventas:ventas, correo:correo});
 
         });
-
-
-      
-
     });
+  
   },
   pagar: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
@@ -414,5 +418,15 @@ module.exports = {
       
       });
     });
+  },
+  actualizarEstado: function (req, res) {
+    console.log(req.params.objeto);
+    carrito.obtenerSeguimiento(conexion, req.params.objeto, (err, tupla)=>{
+
+      console.log("imprimiendo tupla recuperada: ");
+      console.log(tupla);
+      res.render('carritos/actualizarEstado', {articulo: tupla});
+    })
+    //res.render('carritos/actualizarEstado');
   }
 };

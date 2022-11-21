@@ -17,4 +17,5 @@ router.get("/seguimientoComprador",carritoController.seguimientoComprador);
 router.get("/seguimientoVendedor",carritoController.seguimientoVendedor);
 router.get("/pagos",carritoController.pagar);
 router.get("/vistaSeguimientoC",carritoController.vistaSeguimientoC);
+router.get("/actualizarEstado/:objeto",carritoController.actualizarEstado);
 module.exports = router;

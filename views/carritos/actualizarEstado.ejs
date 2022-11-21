@@ -1,0 +1,70 @@
+<%- include ../layouts/cabecera.ejs %> 
+<br/>
+<br/>
+<br/>
+<br/>
+<h2>Seguimiento de productos vendidos</h2>
+<form method="post" action="/products">
+    <div class="form-group">
+        <label for="my-input">Id Cliente: </label>
+        <input id="my-input" class="form-control" type="number" name="nombre">
+    </div>
+
+
+    <div class="form-group">
+        <label for="my-input">Correo: </label>
+        <input id="my-input" class="form-control" type="text" name="categoria">
+    </div>
+
+    <div class="form-group">
+        <label for="my-input">Direccion: </label>
+        <input id="my-input" class="form-control" type="text" name="precio">
+    </div>
+
+    <div class="form-group">
+        <label for="my-input">Fecha: </label>
+        <input id="my-input" class="form-control" type="date" name="precio">
+    </div>
+
+    <div class="form-group">
+        <label for="my-input">Estados Seguimiento: </label>
+
+
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                En Almacen
+            </label>
+          </div>
+
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                Enviado
+            </label>
+          </div>
+
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                En surcusal
+            </label>
+          </div>
+
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+             Entegado
+            </label>
+          </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Enviar Seguimiento</button>
+    <br>
+    <br>
+</form>
+<%- include ../layouts/pie.ejs %>  
