@@ -40,6 +40,9 @@ module.exports ={
     },
     eliminarProductosCarrito:function(conexion,id_comprador, funcion){
       conexion.query("DELETE FROM carrito WHERE id_comprador=?",[id_comprador],funcion);
+    },
+    obtenerSeguimientoVendedor:function(conexion, id_vendedor, funcion){
+      conexion.query("SELECT * FROM seguimiento WHERE vendedor_id_vendedor = ?",[id_vendedor],funcion);
     }
     
 }

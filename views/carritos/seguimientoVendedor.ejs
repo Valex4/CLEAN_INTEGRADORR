@@ -1,13 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hola soy el seguimiento del vendedor</h1>
-    <h2>muchos productos XD</h2>
-</body>
-</html>
+<%- include ../layouts/cabecera.ejs %> 
+<br/>
+<br/>
+<br/>
+<br/>
+<h2>Seguimiento de productos vendidos</h2>
+<br/>
+<table class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>ID Producto</th>
+            <th>Correo cliente</th>
+            <th>Direccion cliente</th>
+            <th>Estado del envio</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for( let product = 0; product < ventas.length; product++ ) { %>
+            <tr>
+                <td><%= product+1 %> </td>
+                <td><%= ventas[product].id_producto %> </td>
+                <td><%= correo %> </td>
+                <td><%= ventas[product].direccionComprador %></td>
+                <td><%= ventas[product].estado %></td>
+                <td> <a href="/products/seguimientoproductos" class="btn btn-warning" type="button">Estados del Producto</a></td>
+            </tr>
+            <% } %>
+    </tbody>
+</table>
+<br/>
+<br/>
+<br/>
+<%- include ../layouts/pie.ejs %>  

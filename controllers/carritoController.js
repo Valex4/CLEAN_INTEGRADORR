@@ -336,7 +336,25 @@ module.exports = {
     });
   },
   seguimientoVendedor: function (req, res) {
-    res.render("carritos/seguimientoVendedor");
+    let id_ven= require("../public/javascripts/idVendedor");
+    let id_vendedor = id_ven[id_ven.length-1];
+    console.log("Id del comprador en seguimiento pedidos: "+ id_vendedor);
+
+    carrito.obtenerSeguimientoVendedor(conexion, id_vendedor,(err, ventas)=>{
+
+        carrito.obtenerDatosComprador(conexion, ventas[0].id_comprador, (err, compradorDatos)=>{
+          console.log("recuperadno los datos del comprador: ");
+          console.log(compradorDatos[0].correo);
+          let correo = compradorDatos[0].correo;
+
+          res.render("carritos/seguimientoVendedor", {ventas:ventas, correo:correo});
+
+        });
+
+
+      
+
+    });
   },
   pagar: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
