@@ -16,4 +16,5 @@ router.post("/cart/:id_carrito",carritoController.eliminarPcarrito);
 router.get("/seguimientoComprador",carritoController.seguimientoComprador);
 router.get("/seguimientoVendedor",carritoController.seguimientoVendedor);
 router.get("/pagos",carritoController.pagar);
+//router.post("/pagos",carritoController.insertarSeguimiento);
 module.exports = router;

@@ -295,7 +295,36 @@ module.exports = {
     });
   },
   seguimientoComprador: function (req, res) {
-    res.render("carritos/seguimientoComprador");
+    let id_comprador = require("../public/javascripts/id");
+    console.log("id_comprador en serums");
+    console.log(id_comprador[id_comprador.length - 1]);
+    let id_c = id_comprador[id_comprador.length - 1];
+    carrito.obtenerCarrito(conexion, id_c, (err, productosC) => {
+      let copia = [];
+      copia = productosC;
+      console.log("El comprador tiene: " + copia.length + " productos");
+      let suma = 0;
+      for (let i = 0; i < copia.length; i++) {
+        copia[i].precioProducto *= copia[i].cantidad;
+        suma += copia[i].precioProducto;
+      }
+      console.log("Monto total: " + suma);
+      console.log(productosC);
+
+      carrito.obtenerDatosComprador(conexion, id_c,(err, comprador) =>{
+        let direccionC = comprador[0].direccion;
+        let estado = "pendiente";
+        let id_vendedor = prod[0].id_vendedor;
+        let id_shopper = comprador[0].id_comprador;
+        console.log("datos que necesito: ");
+        console.log("Direccion comprador: " + direccionC);
+        console.log("Estado: " + estado);
+        console.log("id_vendedor: " + id_vendedor);
+        console.log("id_comprador: " + id_shopper);
+        res.render("carritos/seguimientoComprador", { products: productosC, total: suma, comprador: comprador });
+      
+      });
+    });
   },
   seguimientoVendedor: function (req, res) {
     res.render("carritos/seguimientoVendedor");
@@ -330,4 +359,7 @@ module.exports = {
 
     
   },
+  insertarSeguimiento:function(req, res){
+
+  }
 };

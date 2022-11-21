@@ -1,0 +1,103 @@
+body{
+    background-color: #fff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: rgba(0,0,0,0.9);
+    width: 100%;
+    height: 60px;
+    position: relative;
+    z-index: 100;
+  }
+
+  nav {
+    float: right; 
+  }
+  
+  nav ul {
+    list-style: none;
+    overflow: hidden; /* Limpiamos errores de float */
+  }
+  
+nav ul li {
+    float: left;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+  
+nav ul li a {
+    display: flex;
+    /* display: block; Convertimos los elementos a en elementos bloque para manipular el padding */
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(71, 207, 71);
+}
+.logo{
+    position: absolute;
+    left: 100px; 
+    top: 5px;
+    cursor: pointer;
+    color: #fff;
+    top: 2vh;
+    font-size: 1.5rem;
+}
+
+.logo span{
+    color: rgb(71, 207, 71);
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+}
+
+th{
+    color: #000;
+}
+
+td{
+    position: relative;
+    color: #333;
+    
+}
+
+.A{
+    position: relative;
+}
+
+.k{
+    font-weight: 600;
+    color: rgb(52, 119, 161);;
+}
+
+thead{
+    background-color: rgba(225, 225, 225, 0.9);
+}
+
+th{
+    color: #333;
+}
+
+.N{
+    color: rgb(52, 119, 161);
+    text-decoration: none;
+}
+
+.img1{
+    position: relative;
+    width: 150px;
+    height: 60px;
+}
+
+
+
