@@ -322,9 +322,13 @@ module.exports = {
         
         carrito.insertarDatosSeguimiento(conexion,direccionC,estado,id_shopper,(err)=>{
           console.log("Corre a ver en la base de  datos de seguimiento")
-        
-          carrito.obtenerSeguimientoComprador(conexion, id_shopper,(err, productosSeguimiento)=>{
-            res.render("carritos/seguimientoComprador", { products: productosSeguimiento, total: suma, comprador: comprador });
+
+
+          carrito.eliminarProductosCarrito(conexion,id_shopper,(err)=>{
+            console.log("Se ha borrado los productos del carrito del comprador")
+            carrito.obtenerSeguimientoComprador(conexion, id_shopper,(err, productosSeguimiento)=>{
+              res.render("carritos/seguimientoComprador", { products: productosSeguimiento, total: suma, comprador: comprador });
+            })
           })
         });
       
@@ -360,11 +364,37 @@ module.exports = {
       });
 
     })
-
-
-    
   },
-  insertarSeguimiento:function(req, res){
+  vistaSeguimientoC:function (req, res) {
+    let id_comprador = require("../public/javascripts/id");
+    console.log("id_comprador en serums");
+    console.log(id_comprador[id_comprador.length - 1]);
+    let id_c = id_comprador[id_comprador.length - 1];
+    carrito.obtenerCarrito(conexion, id_c, (err, productosC) => {
+      let copia = [];
+      copia = productosC;
+      console.log("El comprador tiene: " + copia.length + " productos");
+      let suma = 0;
+      for (let i = 0; i < copia.length; i++) {
+        copia[i].precioProducto *= copia[i].cantidad;
+        suma += copia[i].precioProducto;
+      }
+      console.log("Monto total: " + suma);
+      console.log(productosC);
 
+      carrito.obtenerDatosComprador(conexion, id_c,(err, comprador) =>{
+        let direccionC = comprador[0].direccion;
+        let estado = "pendiente";
+        let id_shopper = comprador[0].id_comprador;
+        console.log("datos que necesito: ");
+        console.log("Direccion comprador: " + direccionC);
+        console.log("Estado: " + estado);
+        console.log("id_comprador: " + id_shopper);
+        carrito.obtenerSeguimientoComprador(conexion, id_shopper,(err, productosSeguimiento)=>{
+          res.render("carritos/vistaSeguimientoC", { products: productosSeguimiento, total: suma, comprador: comprador });
+        })
+      
+      });
+    });
   }
 };
