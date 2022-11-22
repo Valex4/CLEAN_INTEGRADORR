@@ -11,21 +11,16 @@ document.addEventListener('click', e => {
 });
 
 const impresion1 = () =>{
-    let expresionRegular =
-      /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    let formularios = document.forms.registroVendedor;
-    let correo1 = formularios.elements.correo;
-    let nombre = formularios.elements.nombreUsuario;
-    let contra1 = formularios.elements.contraseña;
-    let apPaterno = formularios.elements.ap_paterno;
-    let apMaterno = formularios.elements.ap_materno;
-    if (
-      !expresionRegular.test(correo1.value) ||
-      nombre.value == "" ||
-      contra1.value == "" ||
-      apPaterno.value == "" ||
-      apMaterno.value == ""
-    ) {
+  entrada=false;
+  let expresionRegular =/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+      let formulario1 = document.forms.registroVendedor;
+      let nombre=formulario1.elements.nombreUsuario;
+      let correo1 = formulario1.elements.correo;
+      let contrasena1 = formulario1.elements.contraseña;
+      let ap_paterno = formulario1.elements.ap_paterno;
+      let ap_materno = formulario1.elements.ap_materno;
+  
+      if(!expresionRegular.test(correo1.value) || contrasena1.value==="" || nombre.value=="" || ap_paterno.value==""  || ap_materno.value=="") {
       Swal.fire({
         timer: 2500,
         icon: 'error',
@@ -33,6 +28,7 @@ const impresion1 = () =>{
         text: 'Error!',
         footer: '<a href="">Why do I have this issue?</a>'  
       });
+      return RETOR(entrada);
     } else {
       Swal.fire(
         'Good job!',
@@ -43,6 +39,7 @@ const impresion1 = () =>{
 }
 
 const impresion = () => {
+  entrada=false
     let expresionRegular =
       /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     let formularios = document.forms.loginVendedor;
@@ -60,6 +57,7 @@ const impresion = () => {
           text: 'Error!',
           footer: '<a href="">Why do I have this issue?</a>'  
         });
+        return RETOR(entrada)
     } else {
       Swal.fire(
         'Good job!',

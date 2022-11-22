@@ -94,20 +94,28 @@ module.exports={
       const datos = JSON.parse(JSON.stringify(req.body));
       console.log("Vendedores registro: ");
       console.log(datos);
-      user.validarRegistroVendedor(conexion,datos,(err, userdata)=>{
-        if(userdata.length > 0){
-          res.render('users/vendedor', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
-          //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
-          
-        }else{
-          console.log("datos ingresados a BD: ");
-          user.insertarVendedor(conexion,datos,(err, datos) =>{
-            res.redirect('/users/loginVendedor');
-         
-      });
-          
-        }
-      });
+      console.log(datos.nombreUsuario);
+      if(datos.nombreUsuario == '' || datos.correo == '' ||datos.contraseña == '' || datos.ap_paterno == '' || datos.ap_materno == '') {
+        res.render('users/vendedor', { cadena: '¡¡ Complete el formulario !!'});
+
+      }else{
+        user.validarRegistroVendedor(conexion,datos,(err, userdata)=>{
+          if(userdata.length > 0){
+            res.render('users/vendedor', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
+            //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
+            
+          }else{
+            console.log("datos ingresados a BD: ");
+            user.insertarVendedor(conexion,datos,(err, datos) =>{
+              res.redirect('/users/loginVendedor');
+           
+        });
+            
+          }
+        });
+      }
+
+     
   },
   validarVendedor:function(req,res){
     const data = JSON.parse(JSON.stringify(req.body));
