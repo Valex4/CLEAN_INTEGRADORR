@@ -58,17 +58,18 @@ module.exports={
       });
     },validarComprador:function(req,res){
       const data = JSON.parse(JSON.stringify(req.body));
-      console.log("Datos del comprador ingresados por el login: ");
+      console.log("Datos del comprador ingresados por el login del comprador: ");
       console.log(data);
-     
-      user.validarRegistroComprador(conexion,data,(err, registro)=>{
-        
-        console.log("id del comprador: ");//recuperado de la comparación con el registro
-        console.log(registro[0].id_comprador);
+
+      if(data.correo1 == "" || data.contra1 == ""){
+        res.render('users/loginComprador', { cadena: '¡¡ Complete el formulario !!'});
+      }else{
+        user.validarRegistroComprador(conexion,data,(err, registro)=>{
+        console.log("id del comprador: ");
         const prueba = JSON.parse(JSON.stringify(registro));
+        console.log("imprimiendo si existe o no: ")
         console.log(registro.length)
         if(registro.length > 0){ //esto es para evaluar el correo
-          //(data.contra1 == prueba[0].contrasena) ? res.render('./carritos/', {comprador:registro[0].id_comprador, productos: 1}) : res.render('users/loginComprador', { cadena: '¡¡ Contraseña incorrecta !!'});
             if(data.contra1 == prueba[0].contrasena){
               let ids = require("../public/javascripts/id");
               ids.push(registro[0].id_comprador);
@@ -80,15 +81,12 @@ module.exports={
             }else{
               res.render('users/loginComprador', { cadena: '¡¡ Contraseña incorrecta !!'});
             }
-
-
-
-        
         }else{
       
-          res.render('/users/loginComprador', { cadena: '¡¡ Usuario no encontrado !!'});
+          res.render('users/loginComprador', { cadena: '¡¡ Usuario no encontrado !!'});
         }
       });
+     }
     },
     registroVendedor:function(req,res){
       const datos = JSON.parse(JSON.stringify(req.body));

@@ -26,6 +26,8 @@ module.exports ={
     },
     obtenerProduct:function(conexion,funcion){
       conexion.query("SELECT * FROM producto",funcion);
-
+    },
+    retornarIDcomprador:function(conexion,datos,funcion){
+      conexion.query("SELECT * FROM comprador WHERE correo = ?",[datos.correo1],funcion);
     }
 }
