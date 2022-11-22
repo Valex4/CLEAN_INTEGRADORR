@@ -17,6 +17,7 @@
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Categoria</th>
                     <th>Precio</th>
@@ -30,6 +31,7 @@
             <tbody>
                 <% for( let product = 0; product < products.length; product++ ) { %>
                     <tr>
+                        <td> <%= product+1 %>  </td>
                         <td> <%=products[product].id_producto %>  </td>
                         <td> <%=products[product].nombre %></td>
                         <td> <%=products[product].categoria %></td>

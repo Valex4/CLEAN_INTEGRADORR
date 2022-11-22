@@ -126,11 +126,12 @@ module.exports={
             let idVendedor = require("../public/javascripts/idVendedor");
             idVendedor.push(prueba[0].id_vendedor)
             console.log("Guardado id del vendedor: "+ idVendedor[idVendedor.length-1]);
+            let id_v =idVendedor[idVendedor.length-1];
             //console.log("Recibiendo productos: ");
             //console.log(productos);
             console.log("id_vendedor de prueba");
             console.log(prueba[0].id_vendedor);
-           res.render('./products/', { title: 'CleanSkin', products:productos, vendedor: prueba[0].id_vendedor });
+           res.render('./products/', { title: 'CleanSkin', products:productos, vendedor: id_v });
           });
         }else{
           res.render('users/loginVendedor', { cadena: '¡¡ Contraseña incorrecta !!'});

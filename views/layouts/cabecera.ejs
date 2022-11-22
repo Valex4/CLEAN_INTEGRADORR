@@ -20,8 +20,8 @@
               <li><a class="dropdown-item" href="/users/loginVendedor">Cerrar Sesion</a></li>
             </li>
             <li class="nav-item">
-              <form>
-                <button type="submit" onclick="location.href='/products/index '" style="background-color: transparent; cursor:pointer; border:transparent;"><img src="/images/home.png" width="35px" alt=""> </button>
+              <form method="get" action="/products/:<%= vendedor %> ">
+                <button type="submit" style="background-color: transparent; cursor:pointer; border:transparent;"><img src="/images/home.png" width="35px" alt=""> </button>
               </form>
           </li>
             </ul>

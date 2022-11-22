@@ -4,7 +4,8 @@ let borrar= require("fs");
 module.exports={
 
     index:function(req,res){
-
+      let id_ven= require("../public/javascripts/idVendedor");
+      let id_vendedor = id_ven[id_ven.length-1];
       console.log("recibiendo el id en index");
       console.log(req.params.id);
     /* product.obtenerProductos(conexion,req.params.id,function(err, products){
@@ -16,16 +17,18 @@ module.exports={
         console.log(datos)
         res.render('products/index', { title: 'CleanSkin', products:datos, vendedor: 1 });
       });*/
-      product.obtenerProductos2(conexion,req.params.id,function(err, products){
+      product.obtenerProductos2(conexion,id_vendedor,function(err, products){
         console.log(products)
-        res.render('products/index', { title: 'CleanSkin', products:products, vendedor: req.params.id });
+        res.render('products/index', { title: 'CleanSkin', products:products, vendedor: id_vendedor });
       })
 
     },
     crear:function(req,res){
+      let id_ven= require("../public/javascripts/idVendedor");
+      let id_vendedor = id_ven[id_ven.length-1];
       product.retornarVendedorID(conexion,req.params.id,function(err, vendedor){
 
-        res.render('products/crear', {product:vendedor[0]});
+        res.render('products/crear', {product:vendedor[0], vendedor:id_vendedor});
         
       });
     },
@@ -85,9 +88,11 @@ module.exports={
       });
     },
     editar:function(req,res){
+      let id_ven= require("../public/javascripts/idVendedor");
+      let id_vendedor = id_ven[id_ven.length-1];
       product.retornarDatosID(conexion,req.params.id,function(err,registros){
         console.log(registros[0]);
-        res.render('products/editar', {product:registros[0]});
+        res.render('products/editar', {product:registros[0], vendedor: id_vendedor});
       });
       
     },

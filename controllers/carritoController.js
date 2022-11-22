@@ -346,7 +346,7 @@ module.exports = {
           let correo = compradorDatos[0].correo;
           
 
-          res.render("carritos/seguimientoVendedor", {ventas:ventas, correo:correo});
+          res.render("carritos/seguimientoVendedor", {ventas:ventas, correo:correo, vendedor:id_vendedor});
 
         });
     });
@@ -412,6 +412,8 @@ module.exports = {
     });
   },
   actualizarEstado: function (req, res) {
+    let id_ven= require("../public/javascripts/idVendedor");
+      let id_vendedor = id_ven[id_ven.length-1];
     console.log(req.params.objeto);
     carrito.obtenerSeguimiento(conexion, req.params.objeto, (err, tupla)=>{
       carrito.obtenerDatosComprador(conexion, tupla[0].id_comprador, (err, compradorDatos)=>{
@@ -419,7 +421,7 @@ module.exports = {
 
         console.log("imprimiendo tupla recuperada: ");
         console.log(tupla);
-        res.render('carritos/actualizarEstado', {articulo: tupla, correo:correo, id_seguimiento:req.params.objeto });
+        res.render('carritos/actualizarEstado', {articulo: tupla, correo:correo, id_seguimiento:req.params.objeto, vendedor:id_vendedor });
       });
     });
     //res.render('carritos/actualizarEstado');
@@ -441,7 +443,7 @@ module.exports = {
             let correo = compradorDatos[0].correo;
             
 
-            res.render("carritos/seguimientoVendedor", {ventas:ventas, correo:correo});
+            res.render("carritos/seguimientoVendedor", {ventas:ventas, correo:correo , vendedor: id_vendedor});
 
           });
       });
