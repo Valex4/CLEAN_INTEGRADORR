@@ -5,6 +5,7 @@ var router = express.Router();
 const carritoController=require("../controllers/carritoController");
 router.get("/",carritoController.index);
 router.post("/",carritoController.insertProductos);
+//router.post("/",carritoController.favoritos);
 router.get("/cremas",carritoController.cremas);
 router.post("/cremas", carritoController.insertProductos2);
 router.get("/jabones",carritoController.jabones);

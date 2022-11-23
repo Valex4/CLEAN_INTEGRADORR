@@ -39,23 +39,31 @@ module.exports={
     registroComprador:function(req, res){
 
       const datos = JSON.parse(JSON.stringify(req.body));
-      console.log("contraseña registro: ");
-      console.log(datos.contra1);
-      user.validarRegistroComprador(conexion,datos,(err, userdata)=>{
-        console.log(userdata.length);
-        if(userdata.length > 0){
-          res.render('users/comprador', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
-          //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
-          
-        }else{
-          console.log("datos ingresados a BD: ");
-          user.insertarComprador(conexion,datos,(err, datos) =>{
-            res.redirect('./loginComprador');
-         
-      });
-          
-        }
-      });
+      console.log("haciendo prueba haber si jala");
+      
+
+      if(req.body.Usuario == '' || req.body.correo1 == '' || req.body.contra1 == '' || req.body.ap_paterno == '' || req.body.ap_materno == '' || req.body.direccion ==''){
+        console.log("Complete todos los campos porfavor")
+        res.render('users/comprador', { cadena: '¡¡ Complete el formulario !!'});
+      }else{
+        console.log(req.body);
+        console.log(req.body.correo1);
+        user.validarRegistroComprador(conexion,req.body,(err, userdata)=>{
+          console.log(userdata.length);
+          if(userdata.length > 0){
+            res.render('users/comprador', { cadena: '¡¡ 𝘾𝙤𝙧𝙧𝙚𝙤 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙩𝙚 !!'});
+            //console.log(" HAY UNA CUENTA CON EL CORREO INGRESADO");
+            
+          }else{
+            console.log("datos ingresados a BD: ");
+            user.insertarComprador(conexion,datos,(err, datos) =>{
+              res.redirect('./loginComprador');
+           
+        });
+            
+          }
+        });
+      }
     },validarComprador:function(req,res){
       const data = JSON.parse(JSON.stringify(req.body));
       console.log("Datos del comprador ingresados por el login del comprador: ");
