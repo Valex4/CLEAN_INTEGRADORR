@@ -315,12 +315,23 @@ module.exports = {
         let direccionC = comprador[0].direccion;
         let estado = "pendiente";
         let id_shopper = comprador[0].id_comprador;
+        let fecha = new Date();
+        let fechaActual = fecha.getDate() + "/"+ fecha.getMonth() + "/" + fecha.getFullYear();
+        function getRandomInt(min, max) {
+          min = Math.ceil(min);
+          max = Math.floor(max);
+          return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+        }
+        let pedido = getRandomInt(1, 100000);
         console.log("datos que necesito: ");
         console.log("Direccion comprador: " + direccionC);
         console.log("Estado: " + estado);
         console.log("id_comprador: " + id_shopper);
+        console.log("Fecha actual: " + fechaActual);
+        console.log("numero de pedido: "+ pedido);
         
-        carrito.insertarDatosSeguimiento(conexion,direccionC,estado,id_shopper,(err)=>{
+
+      carrito.insertarDatosSeguimiento(conexion,direccionC,estado,fechaActual,pedido,id_shopper,(err)=>{
           console.log("Corre a ver en la base de  datos de seguimiento")
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,28 +25,32 @@
       <h2 style="text-align: center;">Mis pedidos</h2>
       <br>
     <div class="container">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Pedido N°</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Direccion</th>
-                <th scope="col">Enviar A</th>
-                <th scope="col">Estado del envio</th>
-              </tr>
-            </thead>
-            <tbody>
-                <% for( let product = 0; product < products.length; product++ ) { %>
-              <tr>
-                <td scope="row" style="display: flex;justify-content: center;  position: relative;"><%= product+1%></td>
-                <td class="A k"><%= products[product].nombreProducto %> </td>
-                <td class="A"> <%= comprador[0].direccion %> </td>
-                <td class="A k"><%= comprador[0].nombre %> </td>
-                <td class="A"><%=products[product].estado %>  </td>
-              </tr>
-              <% } %>
-            </tbody>
-          </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Pedido N°</th>
+            <th scope="col">Nombre del producto</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Enviar A</th>
+            <th scope="col">Estado del envio</th>
+            <th scope="col">Fecha de compra</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for( let product = 0; product < products.length; product++ ) { %>
+          <tr>
+            <td scope="row" style="display: flex;justify-content: center;  position: relative;"><%= product+1%></td>
+            <td class="A ">CS-<%= products[product].pedido %> </td>
+            <td class="A k"><%= products[product].nombreProducto %> </td>
+            <td class="A"> <%= comprador[0].direccion %> </td>
+            <td class="A k"><%= comprador[0].nombre %> </td>
+            <td class="A"><%=products[product].estado %>  </td>
+            <td class="A"><%=products[product].fecha %>  </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
     </div>
     
 

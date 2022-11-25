@@ -90,7 +90,7 @@ module.exports={
               res.render('users/loginComprador', { cadena: '¡¡ Contraseña incorrecta !!'});
             }
         }else{
-      
+          
           res.render('users/loginComprador', { cadena: '¡¡ Usuario no encontrado !!'});
         }
       });
