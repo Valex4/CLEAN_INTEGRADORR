@@ -49,6 +49,10 @@ module.exports ={
     },
     obtenerSeguimiento:function(conexion,id_seguimiento, funcion) {
       conexion.query("SELECT * FROM seguimiento WHERE id_seguimiento = ?",[id_seguimiento],funcion);
+    },
+    actualizarStock:function(conexion, stock, id_producto, funcion) {
+      conexion.query("UPDATE producto SET stock = ? WHERE id_producto = ?",[stock, id_producto],funcion);
     }
+
     
 }

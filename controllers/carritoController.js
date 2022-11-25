@@ -320,7 +320,7 @@ module.exports = {
         function getRandomInt(min, max) {
           min = Math.ceil(min);
           max = Math.floor(max);
-          return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+          return Math.floor(Math.random() * (max - min) + min);
         }
         let pedido = getRandomInt(1, 100000);
         console.log("datos que necesito: ");
@@ -338,6 +338,31 @@ module.exports = {
           carrito.eliminarProductosCarrito(conexion,id_shopper,(err)=>{
             console.log("Se ha borrado los productos del carrito del comprador")
             carrito.obtenerSeguimientoComprador(conexion, id_shopper,(err, productosSeguimiento)=>{
+
+              for(var i=0; i<productosC.length; i++) {
+                let resta = 0;
+                let idp = productosC[i].id_producto;
+                let cant = productosC[i].cantidad;
+                console.log("id_producto:" + idp);
+                console.log("cantidad:" + cant);
+                carrito.obtenerVendedorProducto(conexion, idp,(err, prod)=>{
+                  console.log("Imprimiendo los datos con el id "+ idp );
+                  console.log("Stock antes de actualizar: "+ prod[0].stock);
+                  let stockActual = prod[0].stock;
+                  resta = stockActual - cant;
+                  console.log("El stock actual para el producto: "+ idp + " es: " + resta);
+
+                  carrito.actualizarStock(conexion,resta,idp,(err)=>{
+                    console.log("Stock Actualizaado");
+                  })
+
+                });
+              }
+
+
+
+
+
               res.render("carritos/seguimientoComprador", { products: productosSeguimiento, total: suma, comprador: comprador });
             })
           })
