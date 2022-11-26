@@ -1,7 +1,9 @@
 <%- include ../layouts/cabeceraProductos.ejs %> 
 <br/>
 <br><br>
-<h2>Seccion de Serum</h2>
+<h2 style="text-align: center;">Seccion de Serums</h2>
+<br><br> 
+  <h5 style="text-align: center;"><%= alert %> </h5>
     
 <div class="row mx-5">
     <% for( let product = 0; product < products.length; product++ ) { %>
@@ -18,6 +20,7 @@
               <input type="hidden" value="<%=products[product].id_producto%>" name="id_producto">
               <input type="hidden" value="<%=products[product].nombre %>" name="nombre">
               <input type="hidden" value="<%=products[product].precio %>" name="precio">
+              <input type="text" value="<%=products[product].stock %>" name="stock">
               <label for="my-input">Cantidad: </label>
               <select class="form-control" name="cantidad">
                 <option value="1">1</option>

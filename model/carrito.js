@@ -1,15 +1,15 @@
 module.exports ={
     obtener:function(conexion,funcion){
-      conexion.query("SELECT * FROM producto",funcion);
+      conexion.query("SELECT * FROM producto where stock > 0",funcion);
     },
     categoriaJabon(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"jabon\" ",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"jabon\" AND stock > 0 ",funcion);
     },
     categoriaCrema(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"crema\" ",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0",funcion);
     },
     categoriaSerum(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"serum\" ",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0",funcion);
     },
     insertarCarrito:function(conexion,datos, funcion){
       conexion.query("INSERT INTO carrito (id_producto,nombreProducto,precioProducto,cantidad,id_comprador,id_vendedor) VALUES (?,?,?,?,?,?)",[datos.id_producto, datos.nombre, datos.precio,datos.cantidad,datos.id_comprador, datos.id_vendedor], funcion);
@@ -52,6 +52,9 @@ module.exports ={
     },
     actualizarStock:function(conexion, stock, id_producto, funcion) {
       conexion.query("UPDATE producto SET stock = ? WHERE id_producto = ?",[stock, id_producto],funcion);
+    },
+    ordenMenorPrincipal:function(conexion, funcion) {
+      conexion.query("SELECT * FROM producto WHERE stock > 0 ORDER BY precio ASC",funcion);
     }
 
     

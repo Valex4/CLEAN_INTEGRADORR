@@ -81,9 +81,10 @@ module.exports={
             if(data.contra1 == prueba[0].contrasena){
               let ids = require("../public/javascripts/id");
               ids.push(registro[0].id_comprador);
+              let alerta = "";
 
               user.obtenerProduct(conexion, (err, productos)=>{
-                res.render('./carritos/', {comprador:registro[0].id_comprador, productos: productos}) 
+                res.render('./carritos/', {comprador:registro[0].id_comprador, productos: productos, alert:alerta}) 
               })
 
             }else{

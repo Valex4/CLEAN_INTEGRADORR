@@ -52,8 +52,21 @@
 <br>
 <br>
 <br>
+
+  <div class="dropdown mr-1">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-offset="10,20" style="background-color: transparent; cursor:pointer; border:transparent; color: black;">
+      Filtros
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Menor a mayor precio</a>
+      <a class="dropdown-item" href="#">Mayor a menor precio</a>
+    </div>
+ 
+  <br>
 <div class="container" style="width:400px" >
-  <h2>Catalogo Productos</h2>
+  <h2 style="text-align: center;">Catalogo Productos</h2>
+  <br><br> 
+  <h5 style="text-align: center;"><%= alert %> </h5>
 </div>
 <br>
 
@@ -75,6 +88,7 @@
           <input type="hidden" value="<%=productos[producto].id_producto%>" name="id_producto">
           <input type="hidden" value="<%=productos[producto].nombre %>" name="nombre">
           <input type="hidden" value="<%=productos[producto].precio %>" name="precio">
+          <input type="text" value="<%=productos[producto].stock %>" name="stock">
           <label for="my-input">Cantidad: </label>
           <select class="form-control" name="cantidad">
             <option value="1">1</option>
@@ -86,15 +100,13 @@
             <option value="7">7</option>
             <option value="8">8</option>
             <option value="9">9</option>
-            <option value="10">10</option>
+            <option value="10">10</option>  
           </select>
           <input type="hidden" value="<%=comprador%>" name="id_comprador" id="id_comprador">
           <input type="hidden" value="<%=productos[producto].id_vendedor%>" name="id_vendedor" id="id_vendedor">
           <br>
           <button class="btn btn-primary" type="submit">Comprar</button>
-
         </form>
-
       </div>
     </div>
 <br>
@@ -104,5 +116,4 @@
   <% } %>
 </div>
   <br>
-
 <%- include ../layouts/pie.ejs %>   
