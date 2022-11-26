@@ -55,6 +55,27 @@ module.exports ={
     },
     ordenMenorPrincipal:function(conexion, funcion) {
       conexion.query("SELECT * FROM producto WHERE stock > 0 ORDER BY precio ASC",funcion);
+    },
+    ordenMayorPrincipal:function(conexion, funcion) {
+      conexion.query("SELECT * FROM producto WHERE stock > 0 ORDER BY precio DESC",funcion);
+    },
+    ordenMenorJabones:function(conexion,funcion) {
+      conexion.query("SELECT * FROM producto where categoria= \"jabon\" AND stock > 0 ORDER BY precio ASC",funcion);
+    },
+    ordenMayorJabones:function(conexion,funcion) {
+      conexion.query("SELECT * FROM producto where categoria= \"jabon\" AND stock > 0 ORDER BY precio DESC",funcion);
+    },
+    ordenMenorSerums:function(conexion,funcion) {
+      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0 ORDER BY precio ASC",funcion);
+    },
+    ordenMayorSerums:function(conexion,funcion) {
+      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0 ORDER BY precio DESC",funcion);
+    },
+    ordenMenorCremas:function(conexion,funcion) {
+      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0 ORDER BY precio ASC",funcion);
+    },
+    ordenMayorCremas:function(conexion,funcion) {
+      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0 ORDER BY precio DESC",funcion);
     }
 
     
