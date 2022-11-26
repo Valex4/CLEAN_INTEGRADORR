@@ -49,10 +49,22 @@
         <img class="img-thumbnail" src="/images/<%= product.imagen %>" width="100" alt="">
         <input id="my-input" class="form-control" type="file" name="imagen">
     </div>
+    <div class="form-group">
+        <label for="my-input">Oferta: </label>
+        <input id="my-input" value="<%= product.oferta %>" class="form-control" type="text" name="oferta" disabled>
+        <select class="form-control" name="oferta">
+            <option>No</option>
+            <option>Si</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="my-input">Porcentaje: </label>
+        <input id="my-input" value="<%= product.porcentaje %>" class="form-control" type="number" name="porcentaje">
+    </div>
     
     
     <button class="btn btn-success" type="submit">Actualizar</button>
-    <a class="btn btn-danger" href="/products">Cancelar</a>
+    <a class="btn btn-danger" href="/products/<%= vendedor  %> ">Cancelar</a>
 </form>
 
 

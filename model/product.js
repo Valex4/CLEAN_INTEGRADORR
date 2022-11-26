@@ -4,7 +4,7 @@ module.exports ={
       conexion.query("SELECT * FROM producto",funcion);
     },
     insertar:function(conexion,datos,archivos,funcion){
-      conexion.query("INSERT INTO producto (nombre,categoria,precio,stock,descripcion,imagen,id_vendedor) VALUES (?,?,?,?,?,?,?) ",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion,archivos.filename,datos.id_vendedor],funcion);
+      conexion.query("INSERT INTO producto (nombre,categoria,precio,stock,descripcion,imagen,id_vendedor,oferta,porcentaje) VALUES (?,?,?,?,?,?,?,?,?) ",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion,archivos.filename,datos.id_vendedor, datos.oferta, datos.porcentaje],funcion);
     },
     mostrarCatalogo(conexion,funcion){
       conexion.query("SELECT * FROM producto",funcion);
@@ -16,7 +16,7 @@ module.exports ={
       conexion.query("DELETE FROM producto WHERE id_producto=?",[id],funcion);
     },
     actualizar:function(conexion,datos,funcion){
-      conexion.query("UPDATE producto SET nombre=?,categoria=?,precio=?,stock=?,descripcion=? WHERE id_producto=?",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion,datos.id],funcion);
+      conexion.query("UPDATE producto SET nombre=?,categoria=?,precio=?,stock=?,descripcion=?, oferta = ?, porcentaje = ? WHERE id_producto=?",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion, datos.oferta, datos.porcentaje,datos.id],funcion);
     },
     actualizarArchivo:function(conexion,datos,archivos,funcion){
       conexion.query("UPDATE producto SET imagen=? WHERE id_producto=?",[archivos.filename,datos.id],funcion);

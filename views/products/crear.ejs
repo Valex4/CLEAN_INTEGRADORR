@@ -49,6 +49,19 @@
     <div class="form-group">
         <input id="my-input" class="form-control" type="hidden" name="id_vendedor" value="<%= product.id_vendedor %>">
     </div>
+
+    <div class="form-group">
+        <label for="my-input">Oferta: </label>
+        <select class="form-control" name="oferta">
+            <option>No</option>
+            <option>Si</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label for="my-input">Porcentaje de descuento: </label>
+        <input id="my-input" class="form-control" type="number" name="porcentaje">
+    </div>
+    
     
     
     <button class="btn btn-success" type="submit">Guardar</button>

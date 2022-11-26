@@ -24,6 +24,8 @@
                     <th>Stock</th>
                     <th>Descripcion</th>
                     <th>Imagen</th>
+                    <th>Oferta</th>
+                    <th>Descuento</th>
                     <th>Acciones</th>
 
                 </tr>
@@ -35,13 +37,15 @@
                         <td> <%=products[product].id_producto %>  </td>
                         <td> <%=products[product].nombre %></td>
                         <td> <%=products[product].categoria %></td>
-                        <td> <%=products[product].precio %></td>
+                        <td>$ <%=products[product].precio %></td>
                         <td> <%=products[product].stock %></td>
                         <td> <%=products[product].descripcion %></td>
                         <td> 
                             <img class="img-thumbnail" width="100" src="/images/<%=products[product].imagen %>" alt="">
                            
                         </td>
+                        <td> <%=products[product].oferta %></td>
+                        <td> <%=products[product].porcentaje %>%</td>
                         <td> 
                             
                             <div class="btn-group-vertical" role="group" aria-label="Vertical button group">

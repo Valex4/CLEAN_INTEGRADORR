@@ -157,6 +157,7 @@ module.exports={
         res.render('users/loginVendedor', { cadena: '¡¡ Usuario no encontrado !!'});
       }
     });
-  }
+  },
+  
 
 }

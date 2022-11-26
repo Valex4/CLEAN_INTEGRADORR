@@ -8,6 +8,12 @@ module.exports={
       let id_vendedor = id_ven[id_ven.length-1];
       console.log("recibiendo el id en index");
       console.log(req.params.id);
+      console.log("Haciendo pruebas matematicas para el porcentaje");
+      let precio = 350;
+      let porcentaje = 10;
+      let valorPorcentaje = (100-porcentaje)/100
+      let precioConDescuento = precio * valorPorcentaje;
+      console.log("Precio con descuento es: "+ precioConDescuento);
     /* product.obtenerProductos(conexion,req.params.id,function(err, products){
         console.log(products)
         res.render('products/index', { title: 'CleanSkin', products:products, vendedor: req.params.id });
