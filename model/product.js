@@ -6,9 +6,6 @@ module.exports ={
     insertar:function(conexion,datos,archivos,funcion){
       conexion.query("INSERT INTO producto (nombre,categoria,precio,stock,descripcion,imagen,id_vendedor,oferta,porcentaje) VALUES (?,?,?,?,?,?,?,?,?) ",[datos.nombre,datos.categoria,datos.precio,datos.stock,datos.descripcion,archivos.filename,datos.id_vendedor, datos.oferta, datos.porcentaje],funcion);
     },
-    mostrarCatalogo(conexion,funcion){
-      conexion.query("SELECT * FROM producto",funcion);
-    },
     retornarDatosID:function(conexion,id,funcion){
       conexion.query("SELECT * FROM producto where id_producto=?",[id],funcion);
     },
@@ -20,15 +17,6 @@ module.exports ={
     },
     actualizarArchivo:function(conexion,datos,archivos,funcion){
       conexion.query("UPDATE producto SET imagen=? WHERE id_producto=?",[archivos.filename,datos.id],funcion);
-    },
-    categoriaJabon(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"jabon\" ",funcion);
-    },
-    categoriaCrema(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"crema\" ",funcion);
-    },
-    categoriaSerum(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"serum\" ",funcion);
     },
     retornarDatosID:function(conexion,id,funcion){
       conexion.query("SELECT * FROM producto where id_producto=?",[id],funcion);

@@ -151,7 +151,7 @@ module.exports={
         }else{
           res.render('users/loginVendedor', { cadena: '¡¡ Contraseña incorrecta !!'});
         }
-        //(data.contraseña == prueba[0].contrasena) ? res.redirect('/products/catalogo') : res.render('users/loginVendedor', { cadena: '¡¡ Contraseña incorrecta !!'});
+
       }else{
         console.log("Usuario no encontrado");
         res.render('users/loginVendedor', { cadena: '¡¡ Usuario no encontrado !!'});

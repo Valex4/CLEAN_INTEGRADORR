@@ -56,19 +56,6 @@ module.exports={
         //res.render('/products',{ products: req.body, vendedor: req.body.id_vendedor});
       });
     },
-    catalogo:function(req,res){
-      /*res.render('products/catalogo');*/
-
-      product.mostrarCatalogo(conexion,(err,datos)=>{
-        res.render('products/catalogo', {productos:datos });
-      });
-    },
-    seguimiento:function(req,res){
-      res.render('products/seguimiento');
-    },
-    seguimientoproductos:function(req,res){
-      res.render('products/seguimientoProducto');
-    },
     eliminar:function(req,res){
       console.log("resepcion de datos");
       console.log(req.params.id);
@@ -148,21 +135,5 @@ module.exports={
     })*/
     //res.redirect('/products');
       
-    },
-    jabones:function(req,res){
-      product.categoriaJabon(conexion,(err,datos)=>{
-        res.render("products/jabones",{products:datos });
-      });
-    },
-    cremas:function(req,res){
-      product.categoriaCrema(conexion,(err,datos)=>{
-       res.render("products/cremas",{products:datos });
-      });
-     },
-     serum:function(req,res){
-      product.categoriaSerum(conexion,(err,datos)=>{
-        res.render("products/serum",{products:datos });
-      });
-      }
-    
+    }
 }
