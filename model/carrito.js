@@ -1,15 +1,15 @@
 module.exports ={
     obtener:function(conexion,funcion){
-      conexion.query("SELECT * FROM producto where stock > 0",funcion);
+      conexion.query("SELECT * FROM producto where stock > 0 AND oferta = \"no\"",funcion);
     },
     categoriaJabon(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"jabon\" AND stock > 0 ",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"jabon\" AND stock > 0 AND oferta = \"no\" ",funcion);
     },
     categoriaCrema(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0 AND oferta = \"no\"",funcion);
     },
     categoriaSerum(conexion,funcion){
-      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0 AND oferta = \"no\"",funcion);
     },
     insertarCarrito:function(conexion,datos, funcion){
       conexion.query("INSERT INTO carrito (id_producto,nombreProducto,precioProducto,cantidad,id_comprador,id_vendedor) VALUES (?,?,?,?,?,?)",[datos.id_producto, datos.nombre, datos.precio,datos.cantidad,datos.id_comprador, datos.id_vendedor], funcion);
@@ -63,19 +63,31 @@ module.exports ={
       conexion.query("SELECT * FROM producto where categoria= \"jabon\" AND stock > 0 ORDER BY precio ASC",funcion);
     },
     ordenMayorJabones:function(conexion,funcion) {
-      conexion.query("SELECT * FROM producto where categoria= \"jabon\" AND stock > 0 ORDER BY precio DESC",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"jabon\" AND stock > 0 AND oferta = \"no\" ORDER BY precio DESC",funcion);
     },
     ordenMenorSerums:function(conexion,funcion) {
-      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0 ORDER BY precio ASC",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0 AND oferta = \"no\" ORDER BY precio ASC",funcion);
     },
     ordenMayorSerums:function(conexion,funcion) {
-      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0 ORDER BY precio DESC",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"serum\" AND stock > 0 AND oferta = \"no\" ORDER BY precio DESC",funcion);
     },
     ordenMenorCremas:function(conexion,funcion) {
-      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0 ORDER BY precio ASC",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0 AND oferta = \"no\" ORDER BY precio ASC",funcion);
     },
     ordenMayorCremas:function(conexion,funcion) {
-      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0 ORDER BY precio DESC",funcion);
+      conexion.query("SELECT * FROM producto where categoria= \"crema\" AND stock > 0 AND oferta = \"no\" ORDER BY precio DESC",funcion);
+    },
+    obtenerOfertas:function(conexion,funcion) {
+      conexion.query("SELECT * FROM producto where oferta = \"si\" AND stock > 0 ",funcion);
+    },
+    ObtenerIdProductoOfertas:function(conexion,id_producto, id_comprador,precio,funcion){
+      conexion.query("SELECT * FROM carrito WHERE id_producto = ? AND id_comprador = ? AND precioProducto = ?",[id_producto, id_comprador, precio],funcion);
+    },
+    ordenMenorOfertas:function(conexion,funcion) {
+      conexion.query("SELECT * FROM producto where stock > 0 AND oferta = \"si\" ORDER BY precio ASC",funcion);
+    },
+    ordenMayorOfertas:function(conexion,funcion){
+      conexion.query("SELECT * FROM producto where stock > 0 AND oferta = \"si\" ORDER BY precio DESC",funcion);
     }
 
     

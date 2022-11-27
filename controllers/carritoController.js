@@ -66,7 +66,7 @@ module.exports = {
   },
   cart: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
-    console.log("id_comprador en serums");
+    console.log("id_comprador en carrito");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
     carrito.obtenerCarrito(conexion, id_c, (err, productosC) => {
@@ -78,14 +78,17 @@ module.exports = {
         copia[i].precioProducto *= copia[i].cantidad;
         suma += copia[i].precioProducto;
       }
+      suma = suma.toFixed(2);
       console.log("Monto total: " + suma);
-
-      res.render("carritos/cart", { products: productosC, total: suma });
+      let alerta = "";
+      res.render("carritos/cart", { products: productosC, total: suma, alert: alerta });
     });
     //res.render('carritos/cart');
   },
   insertProductos: function (req, res) {
-    if (req.body.cantidad > req.body.stock) {
+    let cantidad = parseInt(req.body.cantidad);
+    let stock = parseInt(req.body.stock);
+    if (cantidad > stock) {
       let alerta =
         "¡¡¡ El producto anterior no cuenta con el stock requerido !!!";
       console.log("No se puede comprar más del stock");
@@ -156,7 +159,9 @@ module.exports = {
     }
   },
   insertProductos2: function (req, res) {
-    if (req.body.cantidad > req.body.stock) {
+    let cantidad = parseInt(req.body.cantidad);
+    let stock = parseInt(req.body.stock);
+    if (cantidad > stock) {
       let alerta =
         "¡¡¡ El producto anterior no cuenta con el stock requerido !!!";
       console.log("No se puede comprar más del stock");
@@ -224,7 +229,9 @@ module.exports = {
     }
   },
   insertProductos3: function (req, res) {
-    if (req.body.cantidad > req.body.stock) {
+    let cantidad = parseInt(req.body.cantidad);
+    let stock = parseInt(req.body.stock);
+    if (cantidad > stock) {
       let alerta =
         "¡¡¡ El producto anterior no cuenta con el stock requerido !!!";
       console.log("No se puede comprar más del stock");
@@ -291,7 +298,9 @@ module.exports = {
     }
   },
   insertProductos4: function (req, res) {
-    if (req.body.cantidad > req.body.stock) {
+    let cantidad = parseInt(req.body.cantidad);
+    let stock = parseInt(req.body.stock);
+    if (cantidad > stock) {
       let alerta =
         "¡¡¡ El producto anterior no cuenta con el stock requerido !!!";
       console.log("No se puede comprar más del stock");
@@ -373,8 +382,8 @@ module.exports = {
           suma += productosC[i].precioProducto;
         }
         console.log("Monto total: " + suma);
-
-        res.render("carritos/cart", { products: productosC, total: suma });
+        let alerta = "";
+        res.render("carritos/cart", { products: productosC, total: suma, alert: alerta });
       });
     });
   },
@@ -499,6 +508,7 @@ module.exports = {
     });
   },
   pagar: function (req, res) {
+
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en jabones");
     console.log(id_comprador[id_comprador.length - 1]);
@@ -517,13 +527,19 @@ module.exports = {
           copia[i].precioProducto *= copia[i].cantidad;
           suma += copia[i].precioProducto;
         }
+        suma = suma.toFixed(2);
         console.log("Monto total: " + suma);
-
+        if(copia.length == 0){
+          console.log("Debe de redirigir");
+          let alerta = "No tienes articulos por pagar"
+          res.render("carritos/cart", { products: productosC, total: suma, alert: alerta });
+        }else{        
         res.render("carritos/pagos", {
           products: productosC,
           total: suma,
           comprador: comprador,
         });
+        }
       });
     });
   },
@@ -734,6 +750,124 @@ module.exports = {
     carrito.ordenMayorCremas(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/cremas", {
+        title: "CleanSkin",
+        products: datos,
+        comprador: id_c,
+        alert: alerta,
+      });
+    });
+  },
+  ofertas: function(req, res) {
+    let id_comprador = require("../public/javascripts/id");
+    console.log("id_comprador en ofertas");
+    console.log(id_comprador[id_comprador.length - 1]);
+    let id_c = id_comprador[id_comprador.length - 1];
+    carrito.obtenerOfertas(conexion, (err, datos) => {
+      let alerta = "";
+      res.render("carritos/ofertas", {
+        title: "CleanSkin",
+        products: datos,
+        comprador: id_c,
+        alert: alerta,
+      });
+    });
+  },
+  insertProductos5: function (req, res) {
+    let cantidad = parseInt(req.body.cantidad);
+    let stock = parseInt(req.body.stock);
+    console.log(typeof(cantidad));
+    console.log(typeof(stock));
+    console.log("Cantidad: "+ req.body.cantidad);
+    console.log("stock: "+ req.body.stock);
+    if (cantidad > stock) {
+      let alerta =
+        "¡¡¡ El producto anterior no cuenta con el stock requerido !!!";
+      console.log("No se puede comprar más del stock");
+      carrito.obtenerOfertas(conexion, (err, datos) => {
+        console.log(datos);
+
+        res.render("carritos/ofertas", {
+          title: "CleanSkin",
+          products: datos,
+          comprador: req.body.id_comprador,
+          alert: alerta,
+        });
+      });
+    } else {
+      console.log("Datos para guardar desde ofertas");
+      console.log(req.body);
+      carrito.ObtenerIdProductoOfertas(
+        conexion,
+        req.body.id_producto,
+        req.body.id_comprador,
+        req.body.precio,
+        (err, existe) => {
+          console.log("validando si existe o no");
+          if (existe.length == 1) {
+            console.log("se sumara la cantidad de los productos al actual");
+            console.log(existe);
+            console.log("tratando de sumar las dos cantidades");
+            let sumatoria = parseInt(req.body.cantidad) + parseInt(existe[0].cantidad);
+            console.log("La suma de las cantidades es: " + sumatoria);
+            carrito.actualizarCantidadProducto(
+              conexion,
+              sumatoria,
+              req.body.id_producto,
+              req.body.id_comprador,
+              (err) => {
+                carrito.obtenerOfertas(conexion, (err, datos) => {
+                  console.log(datos);
+                  let alerta = " ";
+                  res.render("carritos/ofertas", {
+                    title: "CleanSkin",
+                    products: datos,
+                    comprador: req.body.id_comprador,
+                    alert: alerta,
+                  });
+                });
+              }
+            );
+          } else {
+            carrito.insertarCarrito(conexion, req.body, (err, datos) => {
+              console.log("datos guardados exitosamente en la BD de carrito");
+              carrito.obtenerOfertas(conexion, (err, datos) => {
+                console.log(datos);
+                let alerta = " ";
+                res.render("carritos/ofertas", {
+                  products: datos,
+                  comprador: req.body.id_comprador,
+                  alert: alerta,
+                });
+              });
+            });
+          }
+        }
+      );
+    }
+  },
+  menorOfertas: function (req, res) {
+    let id_comprador = require("../public/javascripts/id");
+    console.log("id_comprador en ofertas");
+    console.log(id_comprador[id_comprador.length - 1]);
+    let id_c = id_comprador[id_comprador.length - 1];
+    carrito.ordenMenorOfertas(conexion, (err, datos) => {
+      let alerta = "";
+      res.render("carritos/ofertas", {
+        title: "CleanSkin",
+        products: datos,
+        comprador: id_c,
+        alert: alerta,
+      });
+    });
+  },
+  mayorOfertas: function (req, res) {
+    let id_comprador = require("../public/javascripts/id");
+    console.log("id_comprador en ofertas");
+    console.log(id_comprador[id_comprador.length - 1]);
+    let id_c = id_comprador[id_comprador.length - 1];
+    carrito.ordenMayorOfertas(conexion, (err, datos) => {
+      let alerta = "";
+      res.render("carritos/ofertas", {
         title: "CleanSkin",
         products: datos,
         comprador: id_c,
