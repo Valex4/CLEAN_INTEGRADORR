@@ -18,8 +18,8 @@ module.exports ={
     validarRegistroVendedor:function(conexion,datos,funcion){
       conexion.query("SELECT * FROM vendedor WHERE correo = ?",[datos.correo],funcion);
     },
-    retornarDatosID:function(conexion,id,funcion){
-      conexion.query("SELECT * FROM vendedor WHERE correo = ?",[datos.correo],funcion);
+    retornarDatosID:function(conexion,correo,funcion){
+      conexion.query("SELECT * FROM vendedor WHERE correo = ?",[correo],funcion);
     },
     obtenerProductos:function(conexion,datos,funcion){
       conexion.query("SELECT * FROM producto WHERE id_vendedor = ?",[datos[0].id_vendedor],funcion);
@@ -32,5 +32,8 @@ module.exports ={
     },
     validando:function(conexion,datos,funcion){
       conexion.query("SELECT * FROM comprador WHERE correo= ?",[datos.correo1],funcion);
+    },
+    retornarComprador:function(conexion,correo,funcion){
+      conexion.query("SELECT * FROM comprador WHERE correo = ?",[correo], funcion);
     }
 }

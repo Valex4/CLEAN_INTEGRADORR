@@ -12,4 +12,8 @@ router.get('/vendedor',userController.vendedor);
 router.post('/vendedor',userController.registroVendedor);
 router.get('/loginVendedor',userController.loginVendedor);
 router.post('/loginVendedor',userController.validarVendedor);
+router.get("/recuperarComprador",userController.recuperarComprador);
+router.post("/recuperarComprador",userController.recuperandoComprador);
+router.get("/recuperarVendedor", userController.recuperarVendedor);
+router.post("/recuperarVendedor",userController.recuperandoVendedor);
 module.exports = router;

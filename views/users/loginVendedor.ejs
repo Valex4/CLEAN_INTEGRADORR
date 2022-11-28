@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/vendedorStyle.css">
     <link rel="stylesheet" href="/stylesheets/sweetalert2.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Vendedor</title>
     <link rel="shortcut icon" href="/images/CS2.png">
 </head>
 <body>
+    <head>
+        <div>
+            <a href="../users/" class="btns-left"><i class="ri-arrow-left-fill"></i></a>
+        </div>
+    </head>
     <div class="container-form sign-in-btn">
         <form class="formulario" method="post" name="loginVendedor">
             <h2 class="create-account">Iniciar Sesion</h2>
@@ -22,6 +28,12 @@
             <p class="error">   <%= typeof cadena != 'undefined' ?  cadena  : '  '  %> </p>  
             <br>
             <button type="submit" class="submit1" value="Iniciar Sesion" onclick="return impresion()"> Iniciar Sesion</button>
+            <br>
+            <br>
+           
+              <h4 style="color: white;">¿Has olvidado tu contraseña?</h4>
+              
+              <a href="./recuperarVendedor" style="color: white;"> Recuperar contraseña</a>
         </form>
         <div class="welcome-back">
             <div class="message">

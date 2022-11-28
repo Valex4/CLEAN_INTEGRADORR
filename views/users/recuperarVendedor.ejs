@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recuperar contraseña</title>
+	<link rel="shortcut icon" href="/images/CS2.png">
+	<link rel="stylesheet" href="/stylesheets/recuperarVendedor.css">
+</head>
+<body>
+	<section>
+		<div class="color"></div>
+		<div class="color"></div>
+		<div class="color"></div>
+		<div class="box">
+			<div class="square" style="--i:0;"></div>
+			<div class="square" style="--i:1;"></div>
+			<div class="square" style="--i:2;"></div>
+			<div class="square" style="--i:3;"></div>
+			<div class="square" style="--i:4;"></div>
+			 <div class="container">
+			 	<div class="form">
+			 		<h2>Recuperar contraseña</h2>
+			 		<form method="post" action="./recuperarVendedor">
+						<div class="inputBox">
+							<input type="text" placeholder="Correo electronico"/ name="correo">
+						</div>
+						<div class="inputBox">
+							<input type="submit" value="Enviar" />
+						</div>
+					   <br>
+						<h3 style="text-align: center; color: red;"><%= alerta %> </h3>
+					   <h3 style="text-align: center;"><%= contra %> </h3>
+					   <br>
+						<p class="forget">
+							¿Ya tienes una cuenta? <a href="./loginVendedor">Inicia sesión</a>
+						</p>
+					</form>
+			 	</div>
+			 </div>
+		</div>
+	</section>
+</body>
+</html>

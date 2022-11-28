@@ -158,6 +158,69 @@ module.exports={
       }
     });
   },
+  recuperarComprador:function(req, res){
+    let alerta = "";
+    let password = "";
+    res.render('users/recuperarComprador',{contra:password , alerta : alerta});
+  },
+  recuperarVendedor:function(req, res){
+    let alerta = "";
+    let password = "";
+    console.log("Estas en recuperarVendedor")
+    res.render('users/recuperarVendedor', {contra:password , alerta : alerta});
+  },
+  recuperandoComprador:function(req, res){
+    console.log('recuperandoComprador');
+    console.log(req.body);
+    if(req.body.correo ==""){
+      let password = "";
+        let alerta = "Complete el formulario";
+        res.render('users/recuperarComprador',{contra:password , alerta : alerta});
+    }else{
+    user.retornarComprador(conexion, req.body.correo,(err, existe)=>{
+      console.log("Comprobando si existe");
+      console.log(existe.length);
+
+      if(existe.length > 0){
+        let alerta = "";
+        console.log("La contraseña es: " + existe[0].contrasena);
+        let password = "La contraseña es: " + existe[0].contrasena;
+        res.render('users/recuperarComprador',{contra:password, alerta : alerta});
+      }else{
+        let password = "";
+        let alerta = "Usuario no encontrado";
+        console.log("Usuario no encontrado");
+        res.render('users/recuperarComprador',{contra:password , alerta : alerta});
+      }
+    });
+  }
+  },
+  recuperandoVendedor: function (req, res) {
+    console.log('recuperando vendedor');
+    console.log(req.body);
+    if(req.body.correo ==""){
+      let password = "";
+        let alerta = "Complete el formulario";
+        res.render('users/recuperarVendedor',{contra:password , alerta : alerta});
+    }else{
+    user.retornarDatosID(conexion, req.body.correo,(err, existe)=>{
+      console.log("Comprobando si existe");
+      console.log(existe.length);
+
+      if(existe.length > 0){
+        let alerta = "";
+        console.log("La contraseña es: " + existe[0].contrasena);
+        let password = "La contraseña es: " + existe[0].contrasena;
+        res.render('users/recuperarVendedor',{contra:password, alerta : alerta});
+      }else{
+        let password = "";
+        let alerta = "Usuario no encontrado";
+        console.log("Usuario no encontrado");
+        res.render('users/recuperarVendedor',{contra:password , alerta : alerta});
+      }
+    });
+  }
+  }
   
 
 }

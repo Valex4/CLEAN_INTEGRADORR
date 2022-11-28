@@ -205,3 +205,55 @@ label{
     }
 }   
 
+
+.btns-left{
+    position: absolute;
+    display: block;
+    background: #4a4aee;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    top: 0;
+    bottom: 0;
+    margin: 10px;
+    font-size: 2.5rem;
+    text-decoration: none;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 40px;
+    transition: .3s;
+}
+
+.btns-left:hover{
+    width: 100px;
+    font-size: 50px;
+}
+
+@media only screen and (max-width: 750px) {
+    .container-form {
+        position: absolute;
+        top: 190px;
+    }
+    .welcome-back{
+        position: absolute;
+        top: 600px;
+    }
+    body{
+        position: relative;
+        height: 100vh;
+        background-image: url(img/3.jpg);
+
+    }
+    .sign-in.active {
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        top: 200px;
+    }
+    .welcome-back{
+        top: -190px;
+    }
+    .btns-left{
+        left: 10px;
+    }
+}   
