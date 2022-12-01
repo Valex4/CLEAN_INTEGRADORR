@@ -16,4 +16,18 @@ router.get("/recuperarComprador",userController.recuperarComprador);
 router.post("/recuperarComprador",userController.recuperandoComprador);
 router.get("/recuperarVendedor", userController.recuperarVendedor);
 router.post("/recuperarVendedor",userController.recuperandoVendedor);
+
+
+/***********************productos****************************/
+router.get("/reviewProducts",userController.reviewProducts)
+router.get('/createReviewProducts',userController.createReviewProduts);
+router.post('/createReviewProducts',userController.insertReviewProducts);
+/***********************tips*************************/
+router.get("/tips",userController.tips);
+router.get("/createTips",userController.createTips);
+router.post("/createTips",userController.insertTips);
+/***********************servicio(testimonio)*************************/
+router.get("/reviewService",userController.reviewService);
+router.get("/createReviewService",userController.createReviewService);
+router.post("/createReviewService",userController.insertReviewService);
 module.exports = router;

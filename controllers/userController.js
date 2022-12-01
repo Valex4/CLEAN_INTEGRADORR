@@ -220,6 +220,84 @@ module.exports={
       }
     });
   }
+  },
+
+
+
+  createReviewProduts: function (req, res) {
+    let id_comprador = require("../public/javascripts/id");
+    let idC = id_comprador[id_comprador.length -1];
+    console.log("Imprimiendo id del comprador");
+    console.log(idC);    
+    user.obtenerSeguimientoComprador(conexion,idC,(err,datos) => {
+      console.log("imprimiendo el id del comprador despues de comentar: " + idC)
+      console.log("estamos creando una review");
+      console.log(datos);
+      res.render("users/createReview",{productoCliente: datos});
+    });
+  },
+  reviewProducts: function (req, res) {
+    user.obtenerReview(conexion,(err,datos)=>{
+      res.render("users/review",{review:datos});
+    });
+  },
+  insertReviewProducts: function (req, res) {
+    let id_compra = require("../public/javascripts/id");
+    let idC = id_compra[id_compra.length -1];
+    user.obtenerDatosComprador(conexion,idC,(err,datos)=>{
+    let nombre=datos[0].nombre;
+    let fecha = new Date();
+    let fechaActual =  fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
+    console.log("impriminedo la fecha antes de agregar a la bd de reviews productos: " + fechaActual);
+    user.insertarReviewProducts(conexion,idC,nombre,req.body, fechaActual,(err,datos)=>{
+      user.obtenerReview(conexion,(err,datos)=>{
+        res.render("users/review",{review:datos});
+      });
+
+    });
+
+    });
+  },
+  createReviewService:function (req, res) {
+    console.log("Vamos a ver si aqui necesita mandar por parametro")
+    res.render("users/createReviewService");
+  },
+  reviewService: function (req, res) {
+    user.obtenerTestimonios(conexion,(err,datos)=>{
+      res.render("users/reviewService",{testimonio:datos});
+   });
+  },
+  insertReviewService:function (req, res) {
+    let id_compra = require("../public/javascripts/id");
+    let idC = id_compra[id_compra.length -1];
+    user.obtenerDatosComprador(conexion,idC,(err,datos)=>{
+    let nombre=datos[0].nombre;
+    console.log("IMRPRIMIENDO NOMBRE EN TESTIMONIO: " + nombre);
+    console.log(req.body.testimonio);
+    let testi = req.body.testimonio;
+    let fecha = new Date();
+    let fechaActual =  fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
+    user.insertarTestimonio(conexion,idC,nombre,testi,fechaActual,(err)=>{
+    user.obtenerTestimonios(conexion,(err,datos)=>{
+      res.render("users/reviewService", {testimonio :datos});
+     });
+
+    });
+    });
+  },
+  tips: function (req, res) {
+    user.obtenerTestimonios(conexion,(err,datos)=>{
+      res.render("users/tips",{tips:datos});
+    });
+  },
+  createTips: function (req, res) {
+    res.render("users/createTips");
+  },
+  insertTips: function (req, res) {
+
+    user.insertarTestimonio(conexion,id_vendedor,req.body,(err,datos)=>{
+      
+    });
   }
   
 

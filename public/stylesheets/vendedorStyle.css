@@ -141,7 +141,7 @@ label{
     body{
         position: relative;
         height: 100vh;
-        background-image: url(/images/footer.jpg);
+        background-image: url(../images/footer.jpg);
 
     }
     .sign-in.active {
@@ -203,7 +203,7 @@ label{
     body{
         position: relative;
         height: 100vh;
-        background-image: url(img/3.jpg);
+        background-image: url(../images/footer.jpg);
 
     }
     .sign-in.active {
