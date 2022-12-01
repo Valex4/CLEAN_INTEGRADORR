@@ -81,9 +81,10 @@ body {
   padding: 12px 10px;
   border: 0;
   background: linear-gradient(to right, #dbe202 0%,#31f10f 100%); 
-  border-radius: 3px;
+  border-radius: 7px;
   margin-top: 10px;
   color: #fff;
+  font-weight: bold;
   letter-spacing: 1px;
   font-family: 'Rubik', sans-serif;
 }
@@ -104,6 +105,9 @@ body {
 }
 
 .a3 {
+  animation-delay: 2.2s;
+}
+.a6 {
   animation-delay: 2.2s;
 }
 

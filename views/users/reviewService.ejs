@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="/stylesheets/cartas.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/menu.css">
+    <link rel="icon" href="/images/CS2.png">
     <title>Review</title>
 </head>
 <body>
-
-   
-    
     <section class="container">
         <div class="card-grid">
           <% for( let i = 0; i < testimonio.length; i++ ) { %>
@@ -21,7 +19,7 @@
                 <span class="content">
                   <h3 class="heading"><%=testimonio[i].nombre_comprador%></h3>
                     <h3 class="texto"><%=testimonio[i].testimonio%></h3>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br>
                     <p class="category"> <%=testimonio[i].fecha%></p>
                 </span>
             </a>
