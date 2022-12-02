@@ -74,8 +74,8 @@ module.exports={
          
          product.obtenerProductos2(conexion,registros[0].id_vendedor,function(err, products){
           console.log("redireccionando a la pantalla principal del index despues de borrar");
-           // res.redirect("products/:"+registros[0].id_vendedor);
-            res.render('products/index', { title: 'CleanSkin', products:products, vendedor: registros[0].id_vendedor });
+           res.redirect("../:"+registros[0].id_vendedor);
+            //res.render('products/index', { title: 'CleanSkin', products:products, vendedor: registros[0].id_vendedor });
           })
           //res.redirect('/products');
         })
@@ -124,8 +124,9 @@ module.exports={
       console.log(registros[0].id_vendedor);
 
       product.obtenerProductos2(conexion,registros[0].id_vendedor,function(err, products){
-        console.log(products)
-        res.render('products/index', { title: 'CleanSkin', products:products, vendedor: registros[0].id_vendedor });
+        console.log(products);
+        res.redirect("../:"+registros[0].id_vendedor);
+        //res.render('products/index', { title: 'CleanSkin', products:products, vendedor: registros[0].id_vendedor });
       })
     }); 
 

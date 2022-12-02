@@ -21,7 +21,7 @@
             <tr>
                 <td><%= product+1 %> </td>
                 <td><%= ventas[product].id_producto %> </td>
-                <td><%= correo %> </td>
+                <td><%= ventas[product].correo  %> </td>
                 <td><%= ventas[product].direccionComprador %></td>
                 <td><%= ventas[product].estado %></td>
                 <td><form class="form-inline" method="get" action="/carritos/actualizarEstado/<%= ventas[product].id_seguimiento %> ">

@@ -336,6 +336,7 @@ module.exports = {
         let direccionC = comprador[0].direccion;
         let estado = "pendiente";
         let id_shopper = comprador[0].id_comprador;
+        let correo = comprador[0].correo;
         let fecha = new Date();
         let fechaActual =
           fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
@@ -351,6 +352,7 @@ module.exports = {
         console.log("id_comprador: " + id_shopper);
         console.log("Fecha actual: " + fechaActual);
         console.log("numero de pedido: " + pedido);
+        console.log("correo : " + correo);
 
         carrito.insertarDatosSeguimiento(
           conexion,
@@ -359,6 +361,7 @@ module.exports = {
           fechaActual,
           pedido,
           id_shopper,
+          correo,
           (err) => {
             console.log("Corre a ver en la base de  datos de seguimiento");
 
@@ -424,7 +427,7 @@ module.exports = {
         (err, compradorDatos) => {
           console.log("recuperadno los datos del comprador: ");
           console.log(compradorDatos[0].correo);
-          let correo = compradorDatos[0].correo;
+          let correo = compradorDatos[compradorDatos.length-1].correo;
 
           res.render("carritos/seguimientoVendedor", {
             ventas: ventas,
