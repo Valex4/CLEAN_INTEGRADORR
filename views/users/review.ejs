@@ -29,7 +29,7 @@
         <div class="slide-container swiper">
             <div class="slide-content">
                 <div class="card-wrapper swiper-wrapper">
-                    <div class="card swiper-slide">
+                    <!--  <div class="card swiper-slide">
                         <div class="image-content">
                             <span class="overlay"></span>
 
@@ -38,7 +38,7 @@
                             </div>
                         </div>
 
-                        <div class="card-content">
+                      <div class="card-content">
                             <h2 class="name">Yahir Alexander</h2>
                           
                             <p class="description">Los Productos De Clean Skin Restauro Mi Piel Por Completo
@@ -85,7 +85,7 @@
 
                             
                         </div>
-                    </div>
+                    </div>-->
                     <% for( let i = 0; i < review.length; i++ ) { %>
                     
 
@@ -101,6 +101,7 @@
                             <div class="card-content">
                                 <h2 class="name"><%=review[i].nombre_comprador%></h2>
                                 <h3  class="name"><%=review[i].nombre_producto%></h3>
+                                <h3  class="name">Calificación: <%=review[i].calificacion%></h3>
                                 <p class="description"><%=review[i].review%></p>
     
                             </div>
