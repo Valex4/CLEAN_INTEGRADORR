@@ -249,9 +249,12 @@ module.exports={
     let fecha = new Date();
     let fechaActual =  fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
     console.log("impriminedo la fecha antes de agregar a la bd de reviews productos: " + fechaActual);
+console.log("imprimiendo calificacion")
+    console.log(req.body.calificacion);
     user.insertarReviewProducts(conexion,idC,nombre,req.body, fechaActual,(err,datos)=>{
       user.obtenerReview(conexion,(err,datos)=>{
-        res.render("users/review",{review:datos});
+       // res.render("users/review",{review:datos});
+        res.redirect("users/review");
       });
 
     });

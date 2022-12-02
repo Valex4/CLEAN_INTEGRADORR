@@ -44,7 +44,7 @@ module.exports ={
       conexion.query("SELECT * FROM comprador WHERE id_comprador = ?",[dato],funcion);
     },
     insertarReviewProducts:function(conexion,id_comprador,nombre,datos,fecha,funcion){
-      conexion.query("INSERT INTO reviewProducts (id_comprador,nombre_comprador,nombre_producto,review, fecha) VALUES (?,?,?,?,?) ",[id_comprador,nombre,datos.productosComprados,datos.review,fecha],funcion);
+      conexion.query("INSERT INTO reviewProducts (id_comprador,nombre_comprador,nombre_producto,review, fecha, calificacion) VALUES (?,?,?,?,?,?) ",[id_comprador,nombre,datos.productosComprados,datos.review,fecha, datos.calificacion],funcion);
     },
     obtenerTestimonios:function(conexion,funcion){
       conexion.query("SELECT * FROM testimonio",funcion);
