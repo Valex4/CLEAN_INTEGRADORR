@@ -45,10 +45,11 @@ module.exports={
       console.log(req.file.filename);
       product.insertar(conexion,req.body,req.file,(err,datos)=>{
         //res.redirect('/products');
-
+        
         product.obtenerProductos2(conexion,req.body.id_vendedor,function(err, products){
-          console.log(products)
-          res.render('products/index', { title: 'CleanSkin', products:products, vendedor: req.body.id_vendedor });
+          console.log("redireccionando a la pantalla principal del index");
+          res.redirect("products/:"+req.body.id_vendedor);
+          //res.render('products/index', { title: 'CleanSkin', products:products, vendedor: req.body.id_vendedor });
         })
         
 
@@ -70,9 +71,10 @@ module.exports={
           borrar.unlinkSync(nombreImagen);
         }
         product.borrar(conexion,req.params.id,function(err){
-
+         
          product.obtenerProductos2(conexion,registros[0].id_vendedor,function(err, products){
-            console.log(products)
+          console.log("redireccionando a la pantalla principal del index despues de borrar");
+           // res.redirect("products/:"+registros[0].id_vendedor);
             res.render('products/index', { title: 'CleanSkin', products:products, vendedor: registros[0].id_vendedor });
           })
           //res.redirect('/products');

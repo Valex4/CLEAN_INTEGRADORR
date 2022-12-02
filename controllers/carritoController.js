@@ -125,33 +125,14 @@ module.exports = {
               req.body.id_producto,
               req.body.id_comprador,
               (err) => {
-                carrito.obtener(conexion, (err, datos) => {
-                  console.log(datos);
-                  let alerta = " ";
-                  res.render("carritos/index", {
-                    title: "CleanSkin",
-                    productos: datos,
-                    comprador: req.body.id_comprador,
-                    alert: alerta,
-                  });
-                });
+                res.redirect('../carritos/');
               }
             );
           } else {
             console.log("Se agrega el producto al carrito");
             carrito.insertarCarrito(conexion, req.body, (err, datos) => {
               console.log("datos guardados exitosamente en la BD de carrito");
-              carrito.obtener(conexion, (err, datos) => {
-                console.log(datos);
-                let alerta = " ";
-
-                res.render("carritos/index", {
-                  title: "CleanSkin",
-                  productos: datos,
-                  comprador: req.body.id_comprador,
-                  alert: alerta,
-                });
-              });
+              res.redirect('../carritos/');
             });
           }
         }
@@ -167,7 +148,6 @@ module.exports = {
       console.log("No se puede comprar más del stock");
       carrito.categoriaCrema(conexion, (err, datos) => {
         console.log(datos);
-
         res.render("carritos/cremas", {
           title: "CleanSkin",
           products: datos,
@@ -197,31 +177,13 @@ module.exports = {
               req.body.id_producto,
               req.body.id_comprador,
               (err) => {
-                carrito.categoriaCrema(conexion, (err, datos) => {
-                  console.log(datos);
-                  let alerta = " ";
-                  res.render("carritos/cremas", {
-                    title: "CleanSkin",
-                    products: datos,
-                    comprador: req.body.id_comprador,
-                    alert: alerta,
-                  });
-                });
+                res.redirect('../carritos/cremas');
               }
             );
           } else {
             carrito.insertarCarrito(conexion, req.body, (err, datos) => {
               console.log("datos guardados exitosamente en la BD de carrito");
-              carrito.categoriaCrema(conexion, (err, datos) => {
-                console.log(datos);
-                let alerta = " ";
-                res.render("carritos/cremas", {
-                  title: "CleanSkin",
-                  products: datos,
-                  comprador: req.body.id_comprador,
-                  alert: alerta,
-                });
-              });
+              res.redirect('../carritos/cremas');
             });
           }
         }
@@ -267,30 +229,13 @@ module.exports = {
               req.body.id_producto,
               req.body.id_comprador,
               (err) => {
-                carrito.categoriaJabon(conexion, (err, datos) => {
-                  console.log(datos);
-                  let alerta = " ";
-                  res.render("carritos/jabones", {
-                    title: "CleanSkin",
-                    products: datos,
-                    comprador: req.body.id_comprador,
-                    alert: alerta,
-                  });
-                });
+                res.redirect('../carritos/jabones');
               }
             );
           } else {
             carrito.insertarCarrito(conexion, req.body, (err, datos) => {
               console.log("datos guardados exitosamente en la BD de carrito");
-              carrito.categoriaJabon(conexion, (err, datos) => {
-                console.log(datos);
-                let alerta = " ";
-                res.render("carritos/jabones", {
-                  products: datos,
-                  comprador: req.body.id_comprador,
-                  alert: alerta,
-                });
-              });
+              res.redirect('../carritos/jabones'); 
             });
           }
         }
@@ -336,30 +281,13 @@ module.exports = {
               req.body.id_producto,
               req.body.id_comprador,
               (err) => {
-                carrito.categoriaSerum(conexion, (err, datos) => {
-                  console.log(datos);
-                  let alerta = " ";
-                  res.render("carritos/serums", {
-                    title: "CleanSkin",
-                    products: datos,
-                    comprador: req.body.id_comprador,
-                    alert: alerta,
-                  });
-                });
+                res.redirect('../carritos/serums');
               }
             );
           } else {
             carrito.insertarCarrito(conexion, req.body, (err, datos) => {
               console.log("datos guardados exitosamente en la BD de carrito");
-              carrito.categoriaSerum(conexion, (err, datos) => {
-                console.log(datos);
-                let alerta = " ";
-                res.render("carritos/serums", {
-                  products: datos,
-                  comprador: req.body.id_comprador,
-                  alert: alerta,
-                });
-              });
+              res.redirect('../carritos/serums');
             });
           }
         }
@@ -471,12 +399,12 @@ module.exports = {
                       }
                     );
                   }
-
-                  res.render("carritos/seguimientoComprador", {
+                  res.redirect("../carritos/vistaSeguimientoC");
+                /*  res.render("carritos/seguimientoComprador", {
                     products: productosSeguimiento,
                     total: suma,
                     comprador: comprador,
-                  });
+                  });*/
                 }
               );
             });
@@ -815,30 +743,13 @@ module.exports = {
               req.body.id_producto,
               req.body.id_comprador,
               (err) => {
-                carrito.obtenerOfertas(conexion, (err, datos) => {
-                  console.log(datos);
-                  let alerta = " ";
-                  res.render("carritos/ofertas", {
-                    title: "CleanSkin",
-                    products: datos,
-                    comprador: req.body.id_comprador,
-                    alert: alerta,
-                  });
-                });
+                res.redirect('../carritos/ofertas');
               }
             );
           } else {
             carrito.insertarCarrito(conexion, req.body, (err, datos) => {
               console.log("datos guardados exitosamente en la BD de carrito");
-              carrito.obtenerOfertas(conexion, (err, datos) => {
-                console.log(datos);
-                let alerta = " ";
-                res.render("carritos/ofertas", {
-                  products: datos,
-                  comprador: req.body.id_comprador,
-                  alert: alerta,
-                });
-              });
+              res.redirect('../carritos/ofertas');
             });
           }
         }
