@@ -23,60 +23,21 @@
 
 
  <div class="row mx-5">
-    
+
+      <% for( let tip = 0; tip < tips.length; tip++ ) { %>
         <div class="card">
-            <div class="card-image"></div>
-              <div class="card-description">
-                <p class="text-title">Proteje la piel del sol</p>
-                <p class="text-body">Para mantener la piel saludable, no salgas al sol sin protección. Aplicá una crema solar con un SPF que esté adaptado a tu tipo de piel</p>
-              </div>
+          <div class="card-image"><br><br><br>
+              <p class="text-body "> <%= tips[tip].tips %></p> 
+          </div>
+            <div class="card-description">
+              <p class="text-title" style="text-align: center;"><%= tips[tip].titulo %> <br>
+                <img src="/images/CS2.png" alt="" style="width: 110px; float: center; margin-top: 35px;">
+              </p>
             </div>
-    
-            <div class="card">
-                <div class="card-image"></div>
-                  <div class="card-description">
-                    <p class="text-title">Hidratá la piel a diario</p>
-                    <p class="text-body">¡Hacé de la hidratación un hábito diario! Después de darte suaves golpecitos con la toalla para secar la piel, utilizá una crema adecuada para hidratarla de manera efectiva. </p>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="card-image"></div>
-                    <div class="card-description">
-                      <p class="text-title">Hidratá la piel a diario</p>
-                      <p class="text-body">¡Hacé de la hidratación un hábito diario! Después de darte suaves golpecitos con la toalla para secar la piel, utilizá una crema adecuada para hidratarla de manera efectiva. </p>
-                    </div>
-                  </div>
-
-
-                  <div class="card">
-                    <div class="card-image"></div>
-                      <div class="card-description">
-                        <p class="text-title">Proteje la piel del sol</p>
-                        <p class="text-body">Para mantener la piel saludable, no salgas al sol sin protección. Aplicá una crema solar con un SPF que esté adaptado a tu tipo de piel</p>
-                      </div>
-                    </div>
-            
-                    <div class="card">
-                        <div class="card-image"></div>
-                          <div class="card-description">
-                            <p class="text-title">Hidratá la piel a diario</p>
-                            <p class="text-body">¡Hacé de la hidratación un hábito diario! Después de darte suaves golpecitos con la toalla para secar la piel, utilizá una crema adecuada para hidratarla de manera efectiva. </p>
-                          </div>
-                        </div>
-        
-                        <div class="card">
-                          <div class="card-image"></div>
-                            <div class="card-description">
-                              <p class="text-title">Hidratá la piel a diario</p>
-                              <p class="text-body">¡Hacé de la hidratación un hábito diario! Después de darte suaves golpecitos con la toalla para secar la piel, utilizá una crema adecuada para hidratarla de manera efectiva. </p>
-                            </div>
-                          </div>
-
-
-
-    
+          </div>
+          <% } %> 
  </div>
+ <br>
 
 
 

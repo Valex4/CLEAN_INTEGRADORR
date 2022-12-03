@@ -57,5 +57,19 @@ module.exports ={
     },
     insertarTestimonio:function(conexion,id_comprador,nombre,datos, fecha,funcion){
       conexion.query("INSERT INTO testimonio (id_comprador,nombre_comprador,testimonio, fecha) VALUES (?,?,?,?) ",[id_comprador,nombre,datos, fecha],funcion);
+    },
+    insertarTips:function(conexion,datos, funcion) {
+      conexion.query("INSERT INTO tips (id_vendedor, titulo, tips) VALUES (?,?,?) ",[datos.id_vendedor, datos.titulo, datos.tips], funcion);
+    },
+    obtenerTips:function(conexion, funcion){
+      conexion.query("SELECT * FROM tips", funcion);
+    },
+    obtenerTipsVendedor:function(conexion,vendedor, funcion){
+      conexion.query("SELECT * FROM tips WHERE id_vendedor = ?",[vendedor], funcion);
+    },
+    eliminarTips:function(conexion,id_tips, funcion){
+      conexion.query("DELETE FROM tips WHERE id_tips=?",[id_tips],funcion);
     }
+
+
 }

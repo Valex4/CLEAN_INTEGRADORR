@@ -14,13 +14,13 @@
 <form method="post" action="/products" enctype="multipart/form-data">
     <div class="form-group">
         <label for="my-input">Nombre: </label>
-        <input id="my-input" class="form-control" type="text" name="nombre">
+        <input id="my-input" class="form-control" type="text" name="nombre" required>
     </div>
 
 
     <div class="form-group">
         <label for="my-input">Categoria: </label>
-        <select class="form-control" name="categoria">
+        <select class="form-control" name="categoria" required>
             <option>Jabon</option>
             <option>Serum</option>
             <option>Crema</option>
@@ -29,22 +29,22 @@
 
     <div class="form-group">
         <label for="my-input">Precio: </label>
-        <input id="my-input" value="0" min="0" class="form-control" type="number" name="precio">
+        <input id="my-input" value="0" min="0" class="form-control" type="number" name="precio" required>
     </div>
 
     <div class="form-group">
         <label for="my-input">Stock: </label>
-        <input id="my-input" value="0" class="form-control" type="number" name="stock">
+        <input id="my-input" value="0" class="form-control" type="number" name="stock" required>
     </div>
 
     <div class="form-group">
         <label for="my-input">Descripcion: </label>
-        <input id="my-input" class="form-control" type="text" name="descripcion">
+        <input id="my-input" class="form-control" type="text" name="descripcion" required>
     </div>
 
     <div class="form-group">
         <label for="my-input">Imagen: </label>
-        <input id="my-input" class="form-control" type="file" name="imagen">
+        <input id="my-input" class="form-control" type="file" name="imagen" required>
     </div>
     <div class="form-group">
         <input id="my-input" class="form-control" type="hidden" name="id_vendedor" value="<%= product.id_vendedor %>">
@@ -52,14 +52,14 @@
 
     <div class="form-group">
         <label for="my-input">Oferta: </label>
-        <select class="form-control" name="oferta">
+        <select class="form-control" name="oferta" required>
             <option>No</option>
             <option>Si</option>
           </select>
     </div>
     <div class="form-group">
         <label for="my-input">Porcentaje de descuento: </label>
-        <input id="my-input" value="0" min="0" max="100" class="form-control" type="number" name="porcentaje">
+        <input id="my-input" value="0" min="0" max="100" class="form-control" type="number" name="porcentaje" required>
     </div>
     
     

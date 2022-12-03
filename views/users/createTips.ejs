@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> 
-    <title>Document</title>
+    <title>Crear Tips</title>
 </head>
 <body>
-    <h2>¡Añade algun tip de cuidado!</h2>
+    <div class="card">
+        <div class="card-body">
+        <div class="card-header">
+            <h2 style="text-align: center;">¡Añade algun tip de cuidado!</h2>
+        </div>
     <form method="post" action="/users/createTips">
         <div class="form-group">
             <label for="my-input">Titulo: </label>
@@ -19,7 +23,16 @@
             <label for="exampleFormControlTextarea1">Tips de Cuidado</label>
             <textarea class="form-control" name="tips" rows="3"></textarea>
         </div>
+        <div class="form-group">
+            <input id="my-input" class="form-control" type="text" name="id_vendedor" value="<%= vendedor %>">
+        </div>
         <button type="submit" class="btn btn-secondary">Enviar Tips</button>
     </form>
+    <br>
+    <form class="form-inline" method="get" action="/products/<%= vendedor %> ">
+        <button class="btn btn-danger" type="submit">Cancelar</button>
+    </form>
+</div>
+</div>
 </body>
 </html>

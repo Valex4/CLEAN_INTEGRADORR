@@ -1,4 +1,5 @@
 var conexion=require("../config/conexion");
+const { insertarTips } = require("../model/user");
 let user=require("../model/user");
 
 module.exports={
@@ -237,9 +238,16 @@ module.exports={
     });
   },
   reviewProducts: function (req, res) {
+    let id_compra = require("../public/javascripts/id");
+    let id_comprador = id_compra[id_compra.length -1];
+    if(id_comprador == undefined) {
+      console.log("Indefinido en reviews");
+      res.redirect("../users/loginComprador");
+    }else{
     user.obtenerReview(conexion,(err,datos)=>{
       res.render("users/review",{review:datos});
     });
+  }
   },
   insertReviewProducts: function (req, res) {
     let id_compra = require("../public/javascripts/id");
@@ -289,19 +297,61 @@ console.log("imprimiendo calificacion")
     });
   },
   tips: function (req, res) {
-    user.obtenerTestimonios(conexion,(err,datos)=>{
-      res.render("users/tips",{tips:datos});
+    user.obtenerTips(conexion, (err, tips)=>{
+      res.render("users/tips",{tips:tips});
     });
   },
   createTips: function (req, res) {
-    res.render("users/createTips");
+    let id_vend = require("../public/javascripts/idVendedor");
+    let id_vendedor = id_vend[id_vend.length -1];
+    console.log("imprimiendo el id del vendedor");
+    console.log(id_vendedor);
+
+    if ( id_vendedor == undefined ) {
+      console.log("Indefinido");
+      res.redirect("/users/loginVendedor");
+    }else{
+
+      res.render("users/createTips", {vendedor : id_vendedor});
+    }
   },
   insertTips: function (req, res) {
+    let id_vend = require("../public/javascripts/idVendedor");
+    let id_vendedor = id_vend[id_vend.length -1];
 
-    user.insertarTestimonio(conexion,id_vendedor,req.body,(err,datos)=>{
-      
+    console.log("Imprimiendo lo que viene del formulario: ");
+    console.log(req.body.tips);
+    user.insertarTips(conexion, req.body, (err)=>{
+    
+      res.redirect("../users/misTips");
+    })
+  },
+  misTips: function(req, res){
+    let id_vend = require("../public/javascripts/idVendedor");
+    let id_vendedor = id_vend[id_vend.length -1];
+    console.log("Estas en mis tips");
+
+    if (id_vendedor == undefined) {
+      console.log("Indefinido");
+      res.redirect("/users/loginVendedor");
+    }else{
+    user.obtenerTipsVendedor(conexion,id_vendedor,(err, tips)=>{
+      console.log("imprimiendo tips: ");
+      console.log(tips);
+      res.render("users/myTips", {products: tips, vendedor :id_vendedor});
     });
   }
+  },
+  eliminarTips: function (req, res) {
+    console.log("Recibiendo el id del tip a eliminar");
+    console.log("req body: " + req.body);
+    console.log("req params: " + req.params.id);
+    let id_tip = req.params.id;
+    user.eliminarTips(conexion, id_tip,(err)=>{
+      res.redirect("../misTips");
+    });
+  }
+ 
   
 
 }

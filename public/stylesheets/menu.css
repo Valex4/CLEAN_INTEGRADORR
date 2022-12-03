@@ -32,6 +32,7 @@
   
   .header .nav-links{
     list-style: none;
+    transition: 1s;
   }
   
   .header .nav-links li{
@@ -42,7 +43,7 @@
   
   .header .nav-links li a{
     position: relative;
-    left: -90px;
+    left: -235px;
   }
 
   .header .nav-links li:hover{
@@ -100,7 +101,7 @@
       display: none;
   }
   
-  @media (max-width: 1051px){
+  @media (max-width: 1170px){
       .header .nav-links{
           font-size: 16px;
       }
@@ -127,7 +128,8 @@
           position: fixed;
           top: 80px;
           bottom: 0;
-          background: #18b51b;
+          
+          backdrop-filter: blur(12px);
           width: 100%;
           left: 0;
           display: flex;

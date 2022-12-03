@@ -26,8 +26,11 @@ router.post('/createReviewProducts',userController.insertReviewProducts);
 router.get("/tips",userController.tips);
 router.get("/createTips",userController.createTips);
 router.post("/createTips",userController.insertTips);
+router.get("/misTips",userController.misTips);
+router.post("/eliminarTips/:id",userController.eliminarTips);
 /***********************servicio(testimonio)*************************/
 router.get("/reviewService",userController.reviewService);
 router.get("/createReviewService",userController.createReviewService);
 router.post("/createReviewService",userController.insertReviewService);
+
 module.exports = router;

@@ -1,3 +1,5 @@
+//const e = require("express");
+
 var swiper = new Swiper(".slide-content", {
     slidesPerView: 3,
     spaceBetween: 25,
@@ -27,3 +29,7 @@ var swiper = new Swiper(".slide-content", {
         },
     },
   });
+
+
+
+ 

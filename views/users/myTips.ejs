@@ -1,0 +1,42 @@
+<%- include ../layouts/cabecera.ejs %> 
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <h2>Mis tips</h2>
+        <a href="/users/createTips" class="btn btn-info" type="button">Añadir Tips</a>
+        <br/>
+        <br>
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% for( let product = 0; product < products.length; product++ ) { %>
+                    <tr>
+                        <td> <%= product+1 %>  </td>
+                        <td> <%=products[product].titulo %>  </td>
+                        <td> <%=products[product].tips %></td>
+                        <td> 
+                            
+                            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                <form class="form-inline" method="post" action="/users/eliminarTips/<%=products[product].id_tips %>">
+                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+       
+        <%- include ../layouts/pie.ejs %>   

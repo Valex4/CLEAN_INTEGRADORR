@@ -6,6 +6,10 @@ module.exports={
     index:function(req,res){
       let id_ven= require("../public/javascripts/idVendedor");
       let id_vendedor = id_ven[id_ven.length-1];
+      if (id_vendedor == undefined){
+        console.log("Indefinido en index Products");
+        res.redirect("/users/loginVendedor");
+      }else{
       console.log("recibiendo el id en index");
       console.log(req.params.id);
       console.log("Haciendo pruebas matematicas para el porcentaje");
@@ -27,16 +31,21 @@ module.exports={
         console.log(products)
         res.render('products/index', { title: 'CleanSkin', products:products, vendedor: id_vendedor });
       })
-
+     }
     },
     crear:function(req,res){
       let id_ven= require("../public/javascripts/idVendedor");
       let id_vendedor = id_ven[id_ven.length-1];
+      if (id_vendedor == undefined){
+        console.log("Indefinido en crear products");
+        res.redirect("/users/loginVendedor");
+      }else{
       product.retornarVendedorID(conexion,req.params.id,function(err, vendedor){
 
         res.render('products/crear', {product:vendedor[0], vendedor:id_vendedor});
         
       });
+      }
     },
     guardar:function(req,res){
       console.log("guardar informacion:  funcion guardar");
@@ -85,11 +94,15 @@ module.exports={
     editar:function(req,res){
       let id_ven= require("../public/javascripts/idVendedor");
       let id_vendedor = id_ven[id_ven.length-1];
+      if (id_vendedor == undefined){
+        console.log("Indefinido en editar products");
+        res.redirect("/users/loginVendedor");
+      }else{
       product.retornarDatosID(conexion,req.params.id,function(err,registros){
         console.log(registros[0]);
         res.render('products/editar', {product:registros[0], vendedor: id_vendedor});
       });
-      
+      }
     },
     actualizar:function(req,res){
       console.log(req.body);

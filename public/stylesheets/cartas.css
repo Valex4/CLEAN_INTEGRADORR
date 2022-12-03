@@ -66,10 +66,11 @@ body{
     font-size: 1rem;
     margin-bottom: 8px;
     text-transform: uppercase;
-    margin-top: 310px;
+    margin-left: 150px;
 }
 
 .heading{
+    margin-left: 72px;
     color: #e1e1e1;
     font-size: 1.8rem;
 
