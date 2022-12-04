@@ -222,12 +222,12 @@ module.exports={
     });
   }
   },
-
-
-
   createReviewProduts: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     let idC = id_comprador[id_comprador.length -1];
+    if(idC == undefined) {
+      res.redirect("../users/loginComprador");
+    }else{
     console.log("Imprimiendo id del comprador");
     console.log(idC);    
     user.obtenerSeguimientoComprador(conexion,idC,(err,datos) => {
@@ -236,6 +236,7 @@ module.exports={
       console.log(datos);
       res.render("users/createReview",{productoCliente: datos});
     });
+  }
   },
   reviewProducts: function (req, res) {
     let id_compra = require("../public/javascripts/id");
@@ -270,13 +271,27 @@ console.log("imprimiendo calificacion")
     });
   },
   createReviewService:function (req, res) {
+    let id_compra = require("../public/javascripts/id");
+    let idC = id_compra[id_compra.length -1];
+    if(idC == undefined) {
+      console.log("Indefinido en creando testimonio");
+      res.redirect("../users/loginComprador");
+    }else{
     console.log("Vamos a ver si aqui necesita mandar por parametro")
     res.render("users/createReviewService");
+    }
   },
   reviewService: function (req, res) {
-    user.obtenerTestimonios(conexion,(err,datos)=>{
-      res.render("users/reviewService",{testimonio:datos});
-   });
+    let id_compra = require("../public/javascripts/id");
+    let idC = id_compra[id_compra.length -1];
+    if(idC == undefined) {
+      console.log("Indefinido en reviews");
+      res.redirect("../users/loginComprador");
+    }else{
+      user.obtenerTestimonios(conexion,(err,datos)=>{
+        res.render("users/reviewService",{testimonio:datos});
+     });
+    }
   },
   insertReviewService:function (req, res) {
     let id_compra = require("../public/javascripts/id");
@@ -297,9 +312,16 @@ console.log("imprimiendo calificacion")
     });
   },
   tips: function (req, res) {
+    let id_compra = require("../public/javascripts/id");
+    let idC = id_compra[id_compra.length -1];
+    if(idC == undefined) {
+      console.log("Indefinido en tips");
+      res.redirect("../users/loginComprador");
+    }else{
     user.obtenerTips(conexion, (err, tips)=>{
       res.render("users/tips",{tips:tips});
     });
+  }
   },
   createTips: function (req, res) {
     let id_vend = require("../public/javascripts/idVendedor");

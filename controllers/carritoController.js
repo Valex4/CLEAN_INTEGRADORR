@@ -9,7 +9,10 @@ module.exports = {
     console.log("id_comprador en Catalogo");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
-
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en index");
+      res.redirect("../users/loginComprador")
+    }else{
     carrito.obtener(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/index", {
@@ -19,12 +22,17 @@ module.exports = {
         alert: alerta,
       });
     });
+    }
   },
   cremas: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en cremas");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en Cremas");
+      res.redirect("../users/loginComprador")
+    }else{
     carrito.categoriaCrema(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/cremas", {
@@ -34,12 +42,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   jabones: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en jabones");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en jabones");
+      res.redirect("../users/loginComprador")
+    }else{
     carrito.categoriaJabon(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/jabones", {
@@ -49,12 +62,17 @@ module.exports = {
         alert: alerta,
       });
     });
+   }
   },
   serums: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en serums");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en Serums");
+      res.redirect("../users/loginComprador")
+    }else{
     carrito.categoriaSerum(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/serums", {
@@ -63,12 +81,17 @@ module.exports = {
         alert: alerta,
       });
     });
+    }
   },
   cart: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en carrito");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en Carrito");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.obtenerCarrito(conexion, id_c, (err, productosC) => {
       let copia = [];
       copia = productosC;
@@ -83,7 +106,7 @@ module.exports = {
       let alerta = "";
       res.render("carritos/cart", { products: productosC, total: suma, alert: alerta });
     });
-    //res.render('carritos/cart');
+    }
   },
   insertProductos: function (req, res) {
     let cantidad = parseInt(req.body.cantidad);
@@ -317,9 +340,13 @@ module.exports = {
   },
   seguimientoComprador: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
-    console.log("id_comprador en serums");
+    console.log("id_comprador en seguimiento Comprador");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en Seguimiento Comprador");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.obtenerCarrito(conexion, id_c, (err, productosC) => {
       let copia = [];
       copia = productosC;
@@ -415,11 +442,16 @@ module.exports = {
         );
       });
     });
+  }
   },
   seguimientoVendedor: function (req, res) {
     let id_ven = require("../public/javascripts/idVendedor");
     let id_vendedor = id_ven[id_ven.length - 1];
     console.log("Id del vendedor en seguimiento pedidos: " + id_vendedor);
+    if(id_vendedor == undefined){
+      console.log("No ha iniciado sesion en Seguimiento Vendedor");
+      res.redirect("../../users/loginVendedor");
+    }else{
     carrito.obtenerSeguimientoVendedor(conexion, id_vendedor, (err, ventas) => {
       carrito.obtenerDatosComprador(
         conexion,
@@ -437,14 +469,18 @@ module.exports = {
         }
       );
     });
+    }
   },
   pagar: function (req, res) {
 
     let id_comprador = require("../public/javascripts/id");
-    console.log("id_comprador en jabones");
+    console.log("id_comprador en pagos");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
-
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en Pagar");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.obtenerDatosComprador(conexion, id_c, (err, comprador) => {
       console.log("imprimiendo los datos del comprador");
       console.log(comprador);
@@ -473,12 +509,17 @@ module.exports = {
         }
       });
     });
+  }
   },
   vistaSeguimientoC: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en serums");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en Vista Seguimiento C");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.obtenerCarrito(conexion, id_c, (err, productosC) => {
       let copia = [];
       copia = productosC;
@@ -512,10 +553,15 @@ module.exports = {
         );
       });
     });
+  }
   },
   actualizarEstado: function (req, res) {
     let id_ven = require("../public/javascripts/idVendedor");
     let id_vendedor = id_ven[id_ven.length - 1];
+    if(id_vendedor == undefined){
+      console.log("No ha iniciado sesion en Actualizar Estado");
+      res.redirect("../../users/loginVendedor");
+    }else{
     console.log(req.params.objeto);
     carrito.obtenerSeguimiento(conexion, req.params.objeto, (err, tupla) => {
       carrito.obtenerDatosComprador(
@@ -535,7 +581,7 @@ module.exports = {
         }
       );
     });
-    //res.render('carritos/actualizarEstado');
+   }
   },
   update: function (req, res) {
     console.log("estas en update");
@@ -575,6 +621,10 @@ module.exports = {
     console.log("id_comprador en Catalogo menor precio");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en menos precio catalogo");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMenorPrincipal(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/menorPrecioCatalogo", {
@@ -584,12 +634,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   mayorPrecioCatalogo: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en Catalogo mayor precio");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en mayor precio catalogo");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMayorPrincipal(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/mayorPrecioCatalogo", {
@@ -599,12 +654,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   menorPrecioJabones: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en jabones menor precio");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en menor jabones");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMenorJabones(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/menorPrecioJabones", {
@@ -614,12 +674,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   mayorPrecioJabones: function(req, res){
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en jabones mayor precio");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en mayor jabones");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMayorJabones(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/menorPrecioJabones", {
@@ -629,12 +694,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   menorPrecioSerums: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en serums en menor precio");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en menor Serums");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMenorSerums(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/serums", {
@@ -643,12 +713,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   mayorPrecioSerums: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en serums en mayor precio");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en mayor Serums");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMayorSerums(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/serums", {
@@ -657,12 +732,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   menorPrecioCremas: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en cremas menor precio");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en menor Cremas");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMenorCremas(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/cremas", {
@@ -672,12 +752,17 @@ module.exports = {
         alert: alerta,
       });
     });
+    }
   },
   mayorPrecioCremas: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en cremas mayor precio");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en mayor Cremas");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMayorCremas(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/cremas", {
@@ -687,12 +772,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   ofertas: function(req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en ofertas");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en ofertas");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.obtenerOfertas(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/ofertas", {
@@ -702,6 +792,7 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   insertProductos5: function (req, res) {
     let cantidad = parseInt(req.body.cantidad);
@@ -764,6 +855,10 @@ module.exports = {
     console.log("id_comprador en ofertas");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en menor ofertas");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMenorOfertas(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/ofertas", {
@@ -773,12 +868,17 @@ module.exports = {
         alert: alerta,
       });
     });
+  }
   },
   mayorOfertas: function (req, res) {
     let id_comprador = require("../public/javascripts/id");
     console.log("id_comprador en ofertas");
     console.log(id_comprador[id_comprador.length - 1]);
     let id_c = id_comprador[id_comprador.length - 1];
+    if(id_c == undefined){
+      console.log("No ha iniciado sesion en mayor ofertas");
+      res.redirect("../../users/loginComprador");
+    }else{
     carrito.ordenMayorOfertas(conexion, (err, datos) => {
       let alerta = "";
       res.render("carritos/ofertas", {
@@ -788,5 +888,6 @@ module.exports = {
         alert: alerta,
       });
     });
+    }
   }
 };
